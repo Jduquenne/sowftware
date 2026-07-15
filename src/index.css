@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-neutral-50: oklch(0.985 0.004 150);
+  --color-neutral-100: oklch(0.970 0.006 150);
+  --color-neutral-200: oklch(0.922 0.020 150);
+  --color-neutral-300: oklch(0.870 0.024 150);
+  --color-neutral-400: oklch(0.708 0.028 150);
+  --color-neutral-500: oklch(0.556 0.028 150);
+  --color-neutral-600: oklch(0.439 0.024 150);
+  --color-neutral-700: oklch(0.371 0.020 150);
+  --color-neutral-800: oklch(0.269 0.017 150);
+  --color-neutral-900: oklch(0.205 0.013 150);
+  --color-neutral-950: oklch(0.145 0.010 150);
+}
