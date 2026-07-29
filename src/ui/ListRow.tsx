@@ -1,13 +1,14 @@
-import type { ReactNode } from 'react'
+import type { ReactNode, CSSProperties } from 'react'
 
 interface ListRowProps {
   title: ReactNode
   subtitle?: ReactNode
   trailing?: ReactNode
   onClick?: () => void
+  style?: CSSProperties
 }
 
-export function ListRow({ title, subtitle, trailing, onClick }: ListRowProps) {
+export function ListRow({ title, subtitle, trailing, onClick, style }: ListRowProps) {
   const content = (
     <>
       <div>
@@ -20,7 +21,7 @@ export function ListRow({ title, subtitle, trailing, onClick }: ListRowProps) {
 
   if (onClick) {
     return (
-      <li>
+      <li style={style}>
         <button type="button" onClick={onClick} className="flex w-full items-center justify-between py-3 text-left">
           {content}
         </button>
@@ -28,5 +29,9 @@ export function ListRow({ title, subtitle, trailing, onClick }: ListRowProps) {
     )
   }
 
-  return <li className="flex items-center justify-between py-3">{content}</li>
+  return (
+    <li style={style} className="flex items-center justify-between py-3">
+      {content}
+    </li>
+  )
 }

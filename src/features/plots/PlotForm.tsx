@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import type { Plot, PlotType } from '../../services/db'
+import { useStore } from '../../store'
+import type { Plot, PlotType, Exposition, Orientation } from '../../services/db'
 import type { PlotInput } from '../../services/plots.service'
-import { PLOT_TYPES } from './logic/plotTypes'
+import { PLOT_TYPES, EXPOSITIONS, isLayoutable } from './logic/plotTypes'
+import { getDescendantIds } from './logic/hierarchy'
 import { validatePlotForm, hasErrors, type PlotFormErrors } from './logic/validation'
 import { Button } from '../../ui/Button'
 import { Field } from '../../ui/Field'
 import { TextInput, Select } from '../../ui/Input'
+import { CompassPicker } from './CompassPicker'
 
 interface PlotFormProps {
   initial?: Plot
@@ -15,16 +18,24 @@ interface PlotFormProps {
 }
 
 export function PlotForm({ initial, onSubmit, onCancel, onDelete }: PlotFormProps) {
+  const plots = useStore((s) => s.plots)
   const [name, setName] = useState(initial?.name ?? '')
   const [type, setType] = useState<PlotType>(initial?.type ?? 'jardin')
   const [lengthCm, setLengthCm] = useState(initial?.lengthCm?.toString() ?? '')
   const [widthCm, setWidthCm] = useState(initial?.widthCm?.toString() ?? '')
   const [potCount, setPotCount] = useState(initial?.potCount?.toString() ?? '')
-  const [exposure, setExposure] = useState(initial?.exposure ?? '')
+  const [exposition, setExposition] = useState<Exposition | ''>(initial?.exposition ?? '')
+  const [orientation, setOrientation] = useState<Orientation | ''>(initial?.orientation ?? '')
+  const [parentPlotId, setParentPlotId] = useState(initial?.parentPlotId ?? '')
   const [errors, setErrors] = useState<PlotFormErrors>({})
 
+  const excludedParentIds = initial ? getDescendantIds(initial.id, plots) : new Set<string>()
+  const parentOptions = plots.filter(
+    (p) => isLayoutable(p) && p.id !== initial?.id && !excludedParentIds.has(p.id),
+  )
+
   const handleSubmit = () => {
-    const values = { name, type, lengthCm, widthCm, potCount, exposure }
+    const values = { name, type, lengthCm, widthCm, potCount, exposition, orientation }
     const validationErrors = validatePlotForm(values)
     setErrors(validationErrors)
     if (hasErrors(validationErrors)) return
@@ -35,7 +46,12 @@ export function PlotForm({ initial, onSubmit, onCancel, onDelete }: PlotFormProp
       lengthCm: type === 'pot' ? null : Number(lengthCm),
       widthCm: type === 'pot' ? null : Number(widthCm),
       potCount: type === 'pot' ? Number(potCount) : null,
-      exposure: exposure.trim() || null,
+      exposition: exposition || null,
+      orientation: orientation || null,
+      parentPlotId: parentPlotId || null,
+      xInParent: initial?.xInParent ?? null,
+      yInParent: initial?.yInParent ?? null,
+      excludedCells: initial?.excludedCells ?? [],
     })
   }
 
@@ -94,13 +110,34 @@ export function PlotForm({ initial, onSubmit, onCancel, onDelete }: PlotFormProp
         </div>
       )}
 
-      <Field label="Exposition (optionnel)" htmlFor="plot-exposure">
-        <TextInput
-          id="plot-exposure"
-          value={exposure}
-          onChange={(e) => setExposure(e.target.value)}
-          placeholder="Sud, Nord-Est…"
-        />
+      <Field label="Exposition" htmlFor="plot-exposition" error={errors.exposition}>
+        <Select
+          id="plot-exposition"
+          value={exposition}
+          onChange={(e) => setExposition(e.target.value as Exposition | '')}
+        >
+          <option value="">Sélectionner…</option>
+          {EXPOSITIONS.map((e) => (
+            <option key={e.value} value={e.value}>
+              {e.label}
+            </option>
+          ))}
+        </Select>
+      </Field>
+
+      <Field label="Orientation (optionnel)">
+        <CompassPicker value={orientation} onChange={setOrientation} />
+      </Field>
+
+      <Field label="Parcelle parente (optionnel)" htmlFor="plot-parent">
+        <Select id="plot-parent" value={parentPlotId} onChange={(e) => setParentPlotId(e.target.value)}>
+          <option value="">Aucune — parcelle indépendante</option>
+          {parentOptions.map((p) => (
+            <option key={p.id} value={p.id}>
+              {p.name}
+            </option>
+          ))}
+        </Select>
       </Field>
 
       <div className="flex gap-2 pt-2">

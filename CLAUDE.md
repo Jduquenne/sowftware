@@ -85,6 +85,23 @@ IndexedDB has one object store per entity (`catalog`, `plots`, `placements`,
 truth; the Zustand store is an in-memory cache hydrated from services. No
 `persist` middleware.
 
+Plots can nest: a plot may have a `parentPlotId` (self-reference, not a
+separate entity) placed at `xInParent`/`yInParent` inside its parent's grid.
+Plots can also be non-rectangular via `excludedCells` — cells excluded from
+an otherwise-rectangular bounding grid — rather than true polygon geometry,
+staying consistent with the grid-based (not CAD) philosophy below.
+`exposition` (required, 3-value enum) and `orientation` (optional, 8-point
+compass enum) are structured fields, not free text; both defined in
+`features/plots/logic/plotTypes.ts`.
+
+**Gotcha:** IndexedDB has no schema migration — new `Plot` fields added after
+existing records were created come back as `undefined` on read, not the new
+default. `services/plots.service.ts`'s `normalizePlot()` backfills every
+field on `listPlots()`/`getPlot()`. This bit once already: old plots
+vanished from the hierarchy view because `parentPlotId === null` failed
+against `undefined`. Any new `Plot` field needs the same backfill treatment
+or old records silently break.
+
 ## Seed data
 
 The catalog is seeded from a source dataset via a versioned, **non-destructive**
@@ -126,6 +143,27 @@ Bump `SEED_VERSION` in `src/services/db/seed.ts` after running either script.
 - Desktop places by clicking a grid cell; mobile has no visual grid (adds via
   search, auto-assigned to the first free slot) — consistent with mobile
   never getting a spatial canvas, only desktop does.
+- A positioned sub-plot renders as a single occupiable zone (its own
+  footprint via `plotFootprint`) inside its parent's grid; clicking it opens
+  its own independent grid (own `excludedCells`, own placements) rather than
+  recursively rendering nested grids in one canvas — logical nesting via
+  navigation, not geometric nesting on one screen.
+- Desktop interaction modes (shape edit / delete / "placement en série") are
+  mutually exclusive toggles set from the header — activating one clears the
+  others. Each supports click-and-drag over multiple cells the same way:
+  `onMouseDown` performs the action on the first cell and arms a drag value,
+  `onMouseEnter` on subsequent cells repeats it, and a single `window`
+  `mouseup` listener ends the drag. Reuse this pattern for any future
+  bulk-grid action instead of one-cell-at-a-time clicks.
+- `Layout.desktop.tsx` doesn't use the shared `DetailAside` — a full-width
+  grid needs the space a fixed aside would take. It renders a floating
+  bottom-right panel only when there's something to show (shape mode active,
+  or an interaction other than idle), keeping the grid full width when idle.
+- The last plot selected is remembered in `layoutSlice`'s
+  `lastSelectedPlotId` (in-memory only, not persisted to IndexedDB) and used
+  as the default plot, so navigating away and back to Disposition doesn't
+  reset to the first plot in the list. The URL `?plot=` param (via
+  `useSearchParamState`) still wins when present.
 
 ## Yield forecast
 
@@ -175,7 +213,9 @@ feature**, rather than copy-pasting the class string again.
 - `ListRow` — mobile list row (title/subtitle/trailing content, clickable
   or static).
 - `DetailAside` + `DetailAsideHeading` — the desktop `w-80` list+detail-panel
-  shell shared by `Plots`, `Plantings`, `Layout` desktop views.
+  shell shared by `Plots` and `Plantings` desktop views. `Layout` deliberately
+  doesn't use it (see Layout assistant section) — a full-width grid needs the
+  space a fixed aside would take.
 
 Deliberately left un-genericized: desktop `<table>`s (columns differ too much
 per screen to be worth a generic table component) and the `Layout` placement

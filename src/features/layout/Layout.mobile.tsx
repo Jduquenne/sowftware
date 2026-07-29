@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useStore } from '../../store'
 import type { CatalogEntry } from '../../services/db'
-import { isLayoutable, getGridDimensions, footprintCells, occupiedCells, findFreeAnchor } from './logic/grid'
+import { getGridDimensions, footprintCells, occupiedCells, findFreeAnchor } from './logic/grid'
 import { getCompanionRelation } from './logic/companions'
+import { isLayoutable } from '../plots/logic/plotTypes'
 import { Button } from '../../ui/Button'
 import { Select } from '../../ui/Input'
 import { CatalogSearchSelect } from '../../ui/CatalogSearchSelect'
@@ -16,8 +17,14 @@ export function LayoutMobile() {
   const addPlacement = useStore((s) => s.addPlacement)
   const removePlacement = useStore((s) => s.removePlacement)
 
+  const lastSelectedPlotId = useStore((s) => s.lastSelectedPlotId)
+  const setLastSelectedPlotId = useStore((s) => s.setLastSelectedPlotId)
+
   const layoutablePlots = plots.filter(isLayoutable)
-  const [selectedPlotId, setSelectedPlotId] = useState<string | null>(layoutablePlots[0]?.id ?? null)
+  const rememberedPlotId = layoutablePlots.find((p) => p.id === lastSelectedPlotId)?.id
+  const [selectedPlotId, setSelectedPlotId] = useState<string | null>(
+    rememberedPlotId ?? layoutablePlots[0]?.id ?? null,
+  )
   const [mode, setMode] = useState<'list' | 'add'>('list')
   const [addError, setAddError] = useState<string | null>(null)
 
@@ -56,12 +63,15 @@ export function LayoutMobile() {
   const handleAdd = async (entry: CatalogEntry) => {
     if (!plot) return
     const grid = getGridDimensions(plot)
-    const footprint = footprintCells(entry)
-    const occupied = plotPlacements.flatMap((p) => {
-      const e = entryFor(p.catalogId)
-      return e ? occupiedCells(p, footprintCells(e)) : []
-    })
-    const anchor = findFreeAnchor(footprint, grid, occupied)
+    const size = footprintCells(entry)
+    const occupied = [
+      ...plotPlacements.flatMap((p) => {
+        const e = entryFor(p.catalogId)
+        return e ? occupiedCells(p, { w: footprintCells(e), h: footprintCells(e) }) : []
+      }),
+      ...plot.excludedCells,
+    ]
+    const anchor = findFreeAnchor({ w: size, h: size }, grid, occupied)
     if (!anchor) {
       setAddError(`Aucun emplacement disponible pour ${entry.nomCommun} dans cette parcelle.`)
       return
@@ -89,7 +99,10 @@ export function LayoutMobile() {
 
       <Select
         value={selectedPlotId ?? ''}
-        onChange={(e) => setSelectedPlotId(e.target.value)}
+        onChange={(e) => {
+          setSelectedPlotId(e.target.value)
+          setLastSelectedPlotId(e.target.value)
+        }}
         className="mt-2"
       >
         {layoutablePlots.map((p) => (

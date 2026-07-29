@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useStore } from '../../store'
 import { PlotForm } from './PlotForm'
-import { plotTypeLabel, plotDimensionLabel } from './logic/plotTypes'
+import { plotTypeLabel, plotDimensionLabel, expositionLabel } from './logic/plotTypes'
+import { flattenHierarchy, getChildren } from './logic/hierarchy'
 import { Button } from '../../ui/Button'
 import { EmptyState } from '../../ui/EmptyState'
 import { ListRow } from '../../ui/ListRow'
+import { Badge } from '../../ui/Badge'
 
 export function PlotsMobile() {
   const plots = useStore((s) => s.plots)
@@ -30,6 +32,7 @@ export function PlotsMobile() {
 
   const editingPlot = plots.find((p) => p.id === mode)
   if (editingPlot) {
+    const childCount = getChildren(editingPlot.id, plots).length
     return (
       <div className="p-4">
         <h1 className="mb-3 text-lg font-semibold text-green-800">Modifier la parcelle</h1>
@@ -40,11 +43,21 @@ export function PlotsMobile() {
             setMode('list')
           }}
           onCancel={() => setMode('list')}
-          onDelete={async () => {
-            await removePlot(editingPlot.id)
-            setMode('list')
-          }}
+          onDelete={
+            childCount === 0
+              ? async () => {
+                  await removePlot(editingPlot.id)
+                  setMode('list')
+                }
+              : undefined
+          }
         />
+        {childCount > 0 && (
+          <p className="mt-2 text-xs text-neutral-400">
+            Cette parcelle a {childCount} sous-parcelle(s) — détachez-les ou supprimez-les d'abord pour pouvoir
+            supprimer celle-ci.
+          </p>
+        )}
       </div>
     )
   }
@@ -57,11 +70,17 @@ export function PlotsMobile() {
       </div>
 
       <ul className="mt-3 divide-y divide-neutral-200">
-        {plots.map((plot) => (
+        {flattenHierarchy(plots).map(({ plot, depth }) => (
           <ListRow
             key={plot.id}
-            title={plot.name}
+            style={{ paddingLeft: depth * 16 }}
+            title={depth > 0 ? `↳ ${plot.name}` : plot.name}
             subtitle={`${plotTypeLabel(plot.type)} — ${plotDimensionLabel(plot)}`}
+            trailing={
+              plot.exposition && (
+                <Badge className="bg-amber-50 text-amber-700">{expositionLabel(plot.exposition)}</Badge>
+              )
+            }
             onClick={() => setMode(plot.id)}
           />
         ))}

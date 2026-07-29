@@ -42,6 +42,10 @@ export interface CatalogEntry {
 
 export type PlotType = 'jardin' | 'terrasse' | 'potager' | 'pot'
 
+export type Exposition = 'plein_soleil' | 'mi_ombre' | 'ombre'
+
+export type Orientation = 'nord' | 'nord_est' | 'est' | 'sud_est' | 'sud' | 'sud_ouest' | 'ouest' | 'nord_ouest'
+
 export interface Plot {
   id: string
   name: string
@@ -49,7 +53,14 @@ export interface Plot {
   lengthCm: number | null
   widthCm: number | null
   potCount: number | null
-  exposure: string | null
+  exposition: Exposition | null
+  orientation: Orientation | null
+  /** Nesting: this plot occupies a footprint within the parent's own grid, at (xInParent, yInParent). */
+  parentPlotId: string | null
+  xInParent: number | null
+  yInParent: number | null
+  /** Cells excluded from the bounding lengthCm/widthCm rectangle, for non-rectangular plot shapes. */
+  excludedCells: { x: number; y: number }[]
   createdAt: string
   updatedAt: string
 }

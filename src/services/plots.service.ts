@@ -3,14 +3,27 @@ import type { Plot } from './db'
 
 export type PlotInput = Omit<Plot, 'id' | 'createdAt' | 'updatedAt'>
 
+/** Backfills fields added after some plots were already stored — IndexedDB has no schema migration. */
+function normalizePlot(plot: Plot): Plot {
+  return {
+    ...plot,
+    parentPlotId: plot.parentPlotId ?? null,
+    xInParent: plot.xInParent ?? null,
+    yInParent: plot.yInParent ?? null,
+    excludedCells: plot.excludedCells ?? [],
+  }
+}
+
 export async function listPlots(): Promise<Plot[]> {
   const db = await getDB()
-  return db.getAll('plots')
+  const plots = await db.getAll('plots')
+  return plots.map(normalizePlot)
 }
 
 export async function getPlot(id: string): Promise<Plot | undefined> {
   const db = await getDB()
-  return db.get('plots', id)
+  const plot = await db.get('plots', id)
+  return plot ? normalizePlot(plot) : undefined
 }
 
 export async function createPlot(input: PlotInput): Promise<Plot> {

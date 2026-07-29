@@ -5,13 +5,16 @@ import { listPlacements, createPlacement, deletePlacement, type PlacementInput }
 
 export interface LayoutSlice {
   placements: Placement[]
+  lastSelectedPlotId: string | null
   loadPlacements: () => Promise<void>
   addPlacement: (input: PlacementInput) => Promise<void>
   removePlacement: (id: string) => Promise<void>
+  setLastSelectedPlotId: (id: string | null) => void
 }
 
 export const createLayoutSlice: StateCreator<RootStore, [], [], LayoutSlice> = (set, get) => ({
   placements: [],
+  lastSelectedPlotId: null,
   loadPlacements: async () => {
     const placements = await listPlacements()
     set({ placements })
@@ -24,4 +27,5 @@ export const createLayoutSlice: StateCreator<RootStore, [], [], LayoutSlice> = (
     await deletePlacement(id)
     await get().loadPlacements()
   },
+  setLastSelectedPlotId: (id) => set({ lastSelectedPlotId: id }),
 })

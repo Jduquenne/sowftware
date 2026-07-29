@@ -1,4 +1,4 @@
-import type { PlotType } from '../../../services/db'
+import type { PlotType, Exposition, Orientation } from '../../../services/db'
 
 export interface PlotFormValues {
   name: string
@@ -6,7 +6,8 @@ export interface PlotFormValues {
   lengthCm: string
   widthCm: string
   potCount: string
-  exposure: string
+  exposition: Exposition | ''
+  orientation: Orientation | ''
 }
 
 export interface PlotFormErrors {
@@ -14,11 +15,13 @@ export interface PlotFormErrors {
   lengthCm?: string
   widthCm?: string
   potCount?: string
+  exposition?: string
 }
 
 export function validatePlotForm(values: PlotFormValues): PlotFormErrors {
   const errors: PlotFormErrors = {}
   if (!values.name.trim()) errors.name = 'Le nom est requis.'
+  if (!values.exposition) errors.exposition = "L'exposition est requise."
 
   if (values.type === 'pot') {
     if (!values.potCount || Number(values.potCount) <= 0) {

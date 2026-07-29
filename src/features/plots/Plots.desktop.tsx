@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useStore } from '../../store'
 import { PlotForm } from './PlotForm'
-import { plotTypeLabel, plotDimensionLabel } from './logic/plotTypes'
+import { plotTypeLabel, plotDimensionLabel, expositionLabel, orientationLabel } from './logic/plotTypes'
+import { flattenHierarchy, getChildren } from './logic/hierarchy'
 import { Button } from '../../ui/Button'
 import { EmptyState } from '../../ui/EmptyState'
 import { DetailAside, DetailAsideHeading } from '../../ui/DetailAside'
@@ -14,6 +15,8 @@ export function PlotsDesktop() {
   const [selected, setSelected] = useState<'create' | string | null>(null)
 
   const editingPlot = plots.find((p) => p.id === selected)
+  const childCount = editingPlot ? getChildren(editingPlot.id, plots).length : 0
+  const rows = flattenHierarchy(plots)
 
   return (
     <div className="flex h-full">
@@ -34,16 +37,22 @@ export function PlotsDesktop() {
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-100">
-              {plots.map((plot) => (
+              {rows.map(({ plot, depth }) => (
                 <tr
                   key={plot.id}
                   onClick={() => setSelected(plot.id)}
                   className={`cursor-pointer ${selected === plot.id ? 'bg-green-50' : ''}`}
                 >
-                  <td className="py-2 text-neutral-800">{plot.name}</td>
+                  <td className="py-2 text-neutral-800" style={{ paddingLeft: depth * 20 }}>
+                    {depth > 0 && <span className="mr-1 text-neutral-300">↳</span>}
+                    {plot.name}
+                  </td>
                   <td className="py-2 text-neutral-500">{plotTypeLabel(plot.type)}</td>
                   <td className="py-2 text-neutral-500">{plotDimensionLabel(plot)}</td>
-                  <td className="py-2 text-neutral-500">{plot.exposure ?? '—'}</td>
+                  <td className="py-2 text-neutral-500">
+                    {plot.exposition ? expositionLabel(plot.exposition) : '—'}
+                    {plot.orientation && ` · ${orientationLabel(plot.orientation)}`}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -76,11 +85,21 @@ export function PlotsDesktop() {
                 setSelected(null)
               }}
               onCancel={() => setSelected(null)}
-              onDelete={async () => {
-                await removePlot(editingPlot.id)
-                setSelected(null)
-              }}
+              onDelete={
+                childCount === 0
+                  ? async () => {
+                      await removePlot(editingPlot.id)
+                      setSelected(null)
+                    }
+                  : undefined
+              }
             />
+            {childCount > 0 && (
+              <p className="mt-2 text-xs text-neutral-400">
+                Cette parcelle a {childCount} sous-parcelle(s) — détachez-les ou supprimez-les d'abord pour pouvoir
+                supprimer celle-ci.
+              </p>
+            )}
           </>
         )}
         {!selected && <EmptyState>Sélectionnez une parcelle ou créez-en une nouvelle.</EmptyState>}
