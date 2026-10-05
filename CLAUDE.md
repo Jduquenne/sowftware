@@ -102,6 +102,13 @@ vanished from the hierarchy view because `parentPlotId === null` failed
 against `undefined`. Any new `Plot` field needs the same backfill treatment
 or old records silently break.
 
+Deleting a plot cascades (`deletePlot`, one transaction): the plot, all its
+descendants and their placements are deleted; plantings/watering logs in them
+are detached (`plotId: null`), not deleted. For partial plot updates from the
+grid, use `setPlotCellExcluded`/`setPlotPosition` (read-modify-write inside
+the transaction) rather than `editPlot` with a full input built from render
+state — the latter loses writes during a fast drag.
+
 ## Seed data
 
 The catalog is seeded from a source dataset via a versioned, **non-destructive**
@@ -128,7 +135,7 @@ latter re-applies the lookup onto the already-bundled
 repo and full regeneration isn't always possible). One photo per common name
 covers every variety. Files live in `public/catalog-images/` and are added
 progressively — most entries have `null` and fall back to the category icon
-(`utils/categoryStyle.ts`) in the UI; `features/catalog/CatalogCard.tsx` is
+(`utils/categoryStyle.ts`) in the UI; `ui/CatalogCard.tsx` is
 where that fallback (including on a broken/missing file) is implemented.
 Bump `SEED_VERSION` in `src/services/db/seed.ts` after running either script.
 
@@ -138,6 +145,11 @@ Bump `SEED_VERSION` in `src/services/db/seed.ts` after running either script.
   fixed `CELL_SIZE_CM` reference unit; a plant's footprint is
   `round(espacementCm.min / CELL_SIZE_CM)` cells square. This is a helper
   approximation, not a precise CAD simulation.
+- `features/layout/logic/occupancy.ts` (`buildPlotOccupancy`, conflict
+  helpers) is the single source for what occupies a plot's grid (placements,
+  excluded cells, positioned sub-plots) — both Layout views use it; never
+  recompute occupancy in a view. Look catalog entries up via the store's
+  `catalogById`, not `catalog.find`.
 - Only applies to dimensioned plots (`isLayoutable`) — pot-type plots have no
   area to lay out.
 - Desktop places by clicking a grid cell; mobile has no visual grid (adds via
@@ -153,8 +165,11 @@ Bump `SEED_VERSION` in `src/services/db/seed.ts` after running either script.
   others. Each supports click-and-drag over multiple cells the same way:
   `onMouseDown` performs the action on the first cell and arms a drag value,
   `onMouseEnter` on subsequent cells repeats it, and a single `window`
-  `mouseup` listener ends the drag. Reuse this pattern for any future
-  bulk-grid action instead of one-cell-at-a-time clicks.
+  `mouseup` listener ends the drag. Reuse this pattern (`useDragValue`, used
+  by `LayoutGrid`) for any future bulk-grid action instead of
+  one-cell-at-a-time clicks. Modes live in one `Tool` union in
+  `logic/desktopUiState.ts`'s reducer — add a new mode there, not as another
+  boolean `useState`.
 - `Layout.desktop.tsx` doesn't use the shared `DetailAside` — a full-width
   grid needs the space a fixed aside would take. It renders a floating
   bottom-right panel only when there's something to show (shape mode active,
