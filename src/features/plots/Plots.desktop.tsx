@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useStore } from '../../store'
 import { PlotForm } from './PlotForm'
 import { plotTypeLabel, plotDimensionLabel, expositionLabel, orientationLabel } from './logic/plotTypes'
-import { flattenHierarchy, getChildren } from './logic/hierarchy'
+import { flattenHierarchy, getDescendantIds } from './logic/hierarchy'
 import { Button } from '../../ui/Button'
 import { EmptyState } from '../../ui/EmptyState'
 import { DetailAside, DetailAsideHeading } from '../../ui/DetailAside'
@@ -15,7 +15,7 @@ export function PlotsDesktop() {
   const [selected, setSelected] = useState<'create' | string | null>(null)
 
   const editingPlot = plots.find((p) => p.id === selected)
-  const childCount = editingPlot ? getChildren(editingPlot.id, plots).length : 0
+  const descendantCount = editingPlot ? getDescendantIds(editingPlot.id, plots).size : 0
   const rows = flattenHierarchy(plots)
 
   return (
@@ -85,19 +85,14 @@ export function PlotsDesktop() {
                 setSelected(null)
               }}
               onCancel={() => setSelected(null)}
-              onDelete={
-                childCount === 0
-                  ? async () => {
-                      await removePlot(editingPlot.id)
-                      setSelected(null)
-                    }
-                  : undefined
-              }
+              onDelete={async () => {
+                await removePlot(editingPlot.id)
+                setSelected(null)
+              }}
             />
-            {childCount > 0 && (
+            {descendantCount > 0 && (
               <p className="mt-2 text-xs text-neutral-400">
-                Cette parcelle a {childCount} sous-parcelle(s) — détachez-les ou supprimez-les d'abord pour pouvoir
-                supprimer celle-ci.
+                Supprimer cette parcelle supprimera aussi ses {descendantCount} sous-parcelle(s) et leurs placements.
               </p>
             )}
           </>

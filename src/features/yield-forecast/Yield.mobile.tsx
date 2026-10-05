@@ -16,6 +16,7 @@ const MODE_OPTIONS: FilterOption<'calculator' | 'plot'>[] = [
 
 export function YieldMobile() {
   const catalog = useStore((s) => s.catalog)
+  const catalogById = useStore((s) => s.catalogById)
   const plots = useStore((s) => s.plots)
   const plantings = useStore((s) => s.plantings)
   const [mode, setMode] = useState<'calculator' | 'plot'>('calculator')
@@ -31,7 +32,6 @@ export function YieldMobile() {
   const plantsNeeded = selectedEntry && target > 0 ? plantsNeededForTarget(selectedEntry, target) : null
   const areaNeeded = selectedEntry && plantsNeeded ? areaNeededM2(selectedEntry, plantsNeeded) : null
 
-  const catalogById = new Map(catalog.map((c) => [c.id, c]))
   const summary = selectedPlotId ? estimatedYieldForPlot(plantings, selectedPlotId, catalogById) : null
 
   return (

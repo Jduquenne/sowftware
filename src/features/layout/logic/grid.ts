@@ -25,6 +25,11 @@ export function footprintCells(entry: CatalogEntry): number {
   return Math.max(1, Math.round(spacing / CELL_SIZE_CM))
 }
 
+export function entryFootprint(entry: CatalogEntry): Footprint {
+  const size = footprintCells(entry)
+  return { w: size, h: size }
+}
+
 /** A sub-plot's footprint within its parent's grid is its own (possibly non-square) dimensions. */
 export function plotFootprint(plot: Plot): Footprint {
   const { cols, rows } = getGridDimensions(plot)
@@ -46,15 +51,14 @@ export function occupiedCells(anchor: Cell, footprint: Footprint): Cell[] {
   return cells
 }
 
-function cellKey(cell: Cell): string {
+export function cellKey(cell: Cell): string {
   return `${cell.x}:${cell.y}`
 }
 
-export function canPlaceAt(anchor: Cell, footprint: Footprint, grid: GridDimensions, existingCells: Cell[]): boolean {
+export function canPlaceAt(anchor: Cell, footprint: Footprint, grid: GridDimensions, occupied: ReadonlySet<string>): boolean {
   if (anchor.x < 0 || anchor.y < 0) return false
   if (anchor.x + footprint.w > grid.cols || anchor.y + footprint.h > grid.rows) return false
 
-  const occupied = new Set(existingCells.map(cellKey))
   for (const cell of occupiedCells(anchor, footprint)) {
     if (occupied.has(cellKey(cell))) return false
   }
@@ -67,18 +71,17 @@ export function adjacentCells(anchor: Cell, footprint: Footprint): Cell[] {
   const cells: Cell[] = []
   for (let x = anchor.x - 1; x <= anchor.x + footprint.w; x++) {
     for (let y = anchor.y - 1; y <= anchor.y + footprint.h; y++) {
-      const key = `${x}:${y}`
-      if (!footprintCellsSet.has(key)) cells.push({ x, y })
+      if (!footprintCellsSet.has(cellKey({ x, y }))) cells.push({ x, y })
     }
   }
   return cells
 }
 
 /** First free anchor position (row-major scan) that fits the given footprint. */
-export function findFreeAnchor(footprint: Footprint, grid: GridDimensions, existingCells: Cell[]): Cell | null {
+export function findFreeAnchor(footprint: Footprint, grid: GridDimensions, occupied: ReadonlySet<string>): Cell | null {
   for (let y = 0; y <= grid.rows - footprint.h; y++) {
     for (let x = 0; x <= grid.cols - footprint.w; x++) {
-      if (canPlaceAt({ x, y }, footprint, grid, existingCells)) return { x, y }
+      if (canPlaceAt({ x, y }, footprint, grid, occupied)) return { x, y }
     }
   }
   return null

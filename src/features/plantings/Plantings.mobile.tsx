@@ -10,7 +10,7 @@ import { ListRow } from '../../ui/ListRow'
 
 export function PlantingsMobile() {
   const plantings = useStore((s) => s.plantings)
-  const catalog = useStore((s) => s.catalog)
+  const catalogById = useStore((s) => s.catalogById)
   const plots = useStore((s) => s.plots)
   const addPlanting = useStore((s) => s.addPlanting)
   const editPlanting = useStore((s) => s.editPlanting)
@@ -18,7 +18,7 @@ export function PlantingsMobile() {
   const [mode, setMode] = useState<'list' | 'create' | string>('list')
 
   const catalogName = (id: string) => {
-    const entry = catalog.find((c) => c.id === id)
+    const entry = catalogById.get(id)
     return entry ? `${entry.nomCommun} — ${entry.variete}` : 'Plante inconnue'
   }
   const plotName = (id: string | null) => plots.find((p) => p.id === id)?.name ?? '—'

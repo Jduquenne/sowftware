@@ -27,7 +27,7 @@ export interface PlotYieldSummary {
 export function estimatedYieldForPlot(
   plantings: Planting[],
   plotId: string,
-  catalogById: Map<string, CatalogEntry>,
+  catalogById: ReadonlyMap<string, CatalogEntry>,
 ): PlotYieldSummary {
   const active = plantings.filter((p) => p.plotId === plotId && p.status !== 'removed')
 

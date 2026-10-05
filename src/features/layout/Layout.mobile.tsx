@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useStore } from '../../store'
 import type { CatalogEntry } from '../../services/db'
-import { getGridDimensions, footprintCells, occupiedCells, findFreeAnchor } from './logic/grid'
-import { getCompanionRelation } from './logic/companions'
+import { entryFootprint, findFreeAnchor } from './logic/grid'
+import { buildPlotOccupancy, plotWideConflicts } from './logic/occupancy'
 import { isLayoutable } from '../plots/logic/plotTypes'
+import { getChildren } from '../plots/logic/hierarchy'
 import { Button } from '../../ui/Button'
 import { Select } from '../../ui/Input'
 import { CatalogSearchSelect } from '../../ui/CatalogSearchSelect'
@@ -13,6 +14,7 @@ import { EmptyState } from '../../ui/EmptyState'
 export function LayoutMobile() {
   const plots = useStore((s) => s.plots)
   const catalog = useStore((s) => s.catalog)
+  const catalogById = useStore((s) => s.catalogById)
   const placements = useStore((s) => s.placements)
   const addPlacement = useStore((s) => s.addPlacement)
   const removePlacement = useStore((s) => s.removePlacement)
@@ -41,37 +43,11 @@ export function LayoutMobile() {
 
   const plot = layoutablePlots.find((p) => p.id === selectedPlotId)
   const plotPlacements = placements.filter((p) => p.plotId === selectedPlotId)
-  const entryFor = (catalogId: string): CatalogEntry | undefined => catalog.find((c) => c.id === catalogId)
-
-  function conflictsFor(placementId: string): { name: string; reason: string }[] {
-    const placement = plotPlacements.find((p) => p.id === placementId)
-    const entry = placement ? entryFor(placement.catalogId) : undefined
-    if (!placement || !entry) return []
-    const results: { name: string; reason: string }[] = []
-    for (const other of plotPlacements) {
-      if (other.id === placement.id) continue
-      const otherEntry = entryFor(other.catalogId)
-      if (!otherEntry) continue
-      const check = getCompanionRelation(entry, otherEntry)
-      if (check?.relation === 'avoid') {
-        results.push({ name: otherEntry.nomCommun, reason: check.reason })
-      }
-    }
-    return results
-  }
 
   const handleAdd = async (entry: CatalogEntry) => {
     if (!plot) return
-    const grid = getGridDimensions(plot)
-    const size = footprintCells(entry)
-    const occupied = [
-      ...plotPlacements.flatMap((p) => {
-        const e = entryFor(p.catalogId)
-        return e ? occupiedCells(p, { w: footprintCells(e), h: footprintCells(e) }) : []
-      }),
-      ...plot.excludedCells,
-    ]
-    const anchor = findFreeAnchor({ w: size, h: size }, grid, occupied)
+    const { grid, occupied } = buildPlotOccupancy(plot, plotPlacements, getChildren(plot.id, plots), catalogById)
+    const anchor = findFreeAnchor(entryFootprint(entry), grid, occupied)
     if (!anchor) {
       setAddError(`Aucun emplacement disponible pour ${entry.nomCommun} dans cette parcelle.`)
       return
@@ -119,8 +95,8 @@ export function LayoutMobile() {
 
       <ul className="mt-3 divide-y divide-neutral-200">
         {plotPlacements.map((placement) => {
-          const entry = entryFor(placement.catalogId)
-          const conflicts = conflictsFor(placement.id)
+          const entry = catalogById.get(placement.catalogId)
+          const conflicts = plotWideConflicts(placement, plotPlacements, catalogById)
           return (
             <li key={placement.id} className="py-3">
               <div className="flex items-center justify-between">
@@ -134,9 +110,9 @@ export function LayoutMobile() {
                   Retirer
                 </Button>
               </div>
-              {conflicts.map((c) => (
-                <Callout key={c.name} tone="warning" size="sm" className="mt-1">
-                  ⚠️ Conflit avec {c.name} : {c.reason}
+              {conflicts.map(({ neighbor, reason }) => (
+                <Callout key={neighbor.id} tone="warning" size="sm" className="mt-1">
+                  ⚠️ Conflit avec {catalogById.get(neighbor.catalogId)?.nomCommun} : {reason}
                 </Callout>
               ))}
             </li>

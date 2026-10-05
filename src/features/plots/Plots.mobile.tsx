@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useStore } from '../../store'
 import { PlotForm } from './PlotForm'
 import { plotTypeLabel, plotDimensionLabel, expositionLabel } from './logic/plotTypes'
-import { flattenHierarchy, getChildren } from './logic/hierarchy'
+import { flattenHierarchy, getDescendantIds } from './logic/hierarchy'
 import { Button } from '../../ui/Button'
 import { EmptyState } from '../../ui/EmptyState'
 import { ListRow } from '../../ui/ListRow'
@@ -32,7 +32,7 @@ export function PlotsMobile() {
 
   const editingPlot = plots.find((p) => p.id === mode)
   if (editingPlot) {
-    const childCount = getChildren(editingPlot.id, plots).length
+    const descendantCount = getDescendantIds(editingPlot.id, plots).size
     return (
       <div className="p-4">
         <h1 className="mb-3 text-lg font-semibold text-green-800">Modifier la parcelle</h1>
@@ -43,19 +43,14 @@ export function PlotsMobile() {
             setMode('list')
           }}
           onCancel={() => setMode('list')}
-          onDelete={
-            childCount === 0
-              ? async () => {
-                  await removePlot(editingPlot.id)
-                  setMode('list')
-                }
-              : undefined
-          }
+          onDelete={async () => {
+            await removePlot(editingPlot.id)
+            setMode('list')
+          }}
         />
-        {childCount > 0 && (
+        {descendantCount > 0 && (
           <p className="mt-2 text-xs text-neutral-400">
-            Cette parcelle a {childCount} sous-parcelle(s) — détachez-les ou supprimez-les d'abord pour pouvoir
-            supprimer celle-ci.
+            Supprimer cette parcelle supprimera aussi ses {descendantCount} sous-parcelle(s) et leurs placements.
           </p>
         )}
       </div>

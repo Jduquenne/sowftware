@@ -10,6 +10,7 @@ import { EmptyState } from '../../ui/EmptyState'
 
 export function YieldDesktop() {
   const catalog = useStore((s) => s.catalog)
+  const catalogById = useStore((s) => s.catalogById)
   const plots = useStore((s) => s.plots)
   const plantings = useStore((s) => s.plantings)
 
@@ -24,7 +25,6 @@ export function YieldDesktop() {
   const plantsNeeded = selectedEntry && target > 0 ? plantsNeededForTarget(selectedEntry, target) : null
   const areaNeeded = selectedEntry && plantsNeeded ? areaNeededM2(selectedEntry, plantsNeeded) : null
 
-  const catalogById = new Map(catalog.map((c) => [c.id, c]))
   const summary = selectedPlotId ? estimatedYieldForPlot(plantings, selectedPlotId, catalogById) : null
 
   return (

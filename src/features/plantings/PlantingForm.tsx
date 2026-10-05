@@ -17,9 +17,10 @@ interface PlantingFormProps {
 
 export function PlantingForm({ initial, onSubmit, onCancel, onDelete }: PlantingFormProps) {
   const catalog = useStore((s) => s.catalog)
+  const catalogById = useStore((s) => s.catalogById)
   const plots = useStore((s) => s.plots)
 
-  const initialEntry = initial ? catalog.find((c) => c.id === initial.catalogId) : undefined
+  const initialEntry = initial ? catalogById.get(initial.catalogId) : undefined
 
   const [catalogId, setCatalogId] = useState(initial?.catalogId ?? '')
   const [plotId, setPlotId] = useState(initial?.plotId ?? '')
@@ -29,7 +30,7 @@ export function PlantingForm({ initial, onSubmit, onCancel, onDelete }: Planting
   const [notes, setNotes] = useState(initial?.notes ?? '')
   const [errors, setErrors] = useState<{ catalogId?: string; plotId?: string }>({})
 
-  const selectedEntry = catalog.find((c) => c.id === catalogId)
+  const selectedEntry = catalogById.get(catalogId)
 
   const handleSubmit = () => {
     const newErrors: { catalogId?: string; plotId?: string } = {}
