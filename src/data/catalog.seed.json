@@ -39,7 +39,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.05,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/ail.jpg"
   },
   {
     "id": "legume-ail-rose-de-lautrec",
@@ -82,7 +82,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.05,
     "notes": "IGP",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/ail.jpg"
   },
   {
     "id": "legume-ail-violet-de-cadours",
@@ -125,7 +125,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.05,
     "notes": "AOP",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/ail.jpg"
   },
   {
     "id": "legume-artichaut-camus-de-bretagne",
@@ -170,7 +170,7 @@
     "perennial": true,
     "yieldPerPlantKg": 1.5,
     "notes": "reference francaise",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/artichaut.jpg"
   },
   {
     "id": "legume-artichaut-violet-de-provence",
@@ -213,7 +213,7 @@
     "perennial": true,
     "yieldPerPlantKg": 1.5,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/artichaut.jpg"
   },
   {
     "id": "legume-asperge-argenteuil-hative",
@@ -254,7 +254,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.3,
     "notes": "Recolte a partir de la 3e annee, meme carre pendant 10-15 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/asperge.jpg"
   },
   {
     "id": "legume-aubergine-longue-violette-hative",
@@ -299,7 +299,7 @@
     "perennial": false,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/aubergine.jpg"
   },
   {
     "id": "legume-aubergine-violette-de-barbentane",
@@ -344,7 +344,7 @@
     "perennial": false,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/aubergine.jpg"
   },
   {
     "id": "legume-betterave-rouge-detroit-2",
@@ -387,7 +387,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/betterave-rouge.jpg"
   },
   {
     "id": "legume-betterave-rouge-rouge-crapaudine",
@@ -430,7 +430,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "variete ancienne allongee",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/betterave-rouge.jpg"
   },
   {
     "id": "legume-blette-bright-lights-cardes-colorees",
@@ -477,7 +477,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1,
     "notes": "decorative",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/blette.jpg"
   },
   {
     "id": "legume-blette-verte-a-carde-blanche",
@@ -524,7 +524,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/blette.jpg"
   },
   {
     "id": "legume-brocoli-calabrese",
@@ -573,7 +573,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.4,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/brocoli.jpg"
   },
   {
     "id": "legume-carotte-amsterdam",
@@ -618,7 +618,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/carotte.jpg"
   },
   {
     "id": "legume-carotte-de-chantenay",
@@ -665,7 +665,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "adaptee sols lourds",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/carotte.jpg"
   },
   {
     "id": "legume-carotte-jaune-du-doubs",
@@ -711,7 +711,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/carotte.jpg"
   },
   {
     "id": "legume-carotte-nantaise",
@@ -758,7 +758,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "reference, sans coeur",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/carotte.jpg"
   },
   {
     "id": "legume-carotte-touchon",
@@ -805,7 +805,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/carotte.jpg"
   },
   {
     "id": "legume-chou-de-bruxelles-groninger",
@@ -852,7 +852,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.5,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chou-de-bruxelles.jpg"
   },
   {
     "id": "legume-chou-pomme-bacalan",
@@ -900,7 +900,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Rotation: eviter apres autre brassicacee (radis, navet...)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chou-pomme.jpg"
   },
   {
     "id": "legume-chou-pomme-cabus",
@@ -953,7 +953,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Rotation: eviter apres autre brassicacee (radis, navet...)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chou-pomme.jpg"
   },
   {
     "id": "legume-chou-pomme-milan-de-pontoise",
@@ -1001,7 +1001,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Rotation: eviter apres autre brassicacee (radis, navet...)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chou-pomme.jpg"
   },
   {
     "id": "legume-chou-fleur-boule-de-neige",
@@ -1050,7 +1050,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.8,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chou-fleur.jpg"
   },
   {
     "id": "legume-chou-fleur-merveille-de-cambrai",
@@ -1098,7 +1098,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.8,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chou-fleur.jpg"
   },
   {
     "id": "legume-chou-rave-blanc-de-vienne",
@@ -1145,7 +1145,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chou-rave.jpg"
   },
   {
     "id": "legume-concombre-marketmore",
@@ -1190,7 +1190,7 @@
     "perennial": false,
     "yieldPerPlantKg": 2.5,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/concombre.jpg"
   },
   {
     "id": "legume-concombre-vert-long-maraicher",
@@ -1235,7 +1235,7 @@
     "perennial": false,
     "yieldPerPlantKg": 2.5,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/concombre.jpg"
   },
   {
     "id": "legume-courge-butternut-butternut",
@@ -1279,7 +1279,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/courge-butternut.jpg"
   },
   {
     "id": "legume-courgette-blanche",
@@ -1326,7 +1326,7 @@
     "perennial": false,
     "yieldPerPlantKg": 4,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/courgette.jpg"
   },
   {
     "id": "legume-courgette-ronde-de-nice",
@@ -1373,7 +1373,7 @@
     "perennial": false,
     "yieldPerPlantKg": 4,
     "notes": "forme ronde",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/courgette.jpg"
   },
   {
     "id": "legume-courgette-verte-de-milan",
@@ -1420,7 +1420,7 @@
     "perennial": false,
     "yieldPerPlantKg": 4,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/courgette.jpg"
   },
   {
     "id": "legume-cresson-de-fontaine",
@@ -1471,7 +1471,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.2,
     "notes": "besoin d'humidite constante",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cresson.jpg"
   },
   {
     "id": "legume-celeri-branche-dore-pascal",
@@ -1518,7 +1518,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.8,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/celeri-branche.jpg"
   },
   {
     "id": "legume-celeri-rave-geant-de-prague",
@@ -1563,7 +1563,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.5,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/celeri-rave.jpg"
   },
   {
     "id": "legume-endive-chicon-witloof",
@@ -1606,7 +1606,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/endive-chicon.jpg"
   },
   {
     "id": "legume-fenouil-doux-de-florence",
@@ -1652,7 +1652,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fenouil.jpg"
   },
   {
     "id": "legume-feve-aguadulce",
@@ -1696,7 +1696,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.4,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/feve.jpg"
   },
   {
     "id": "legume-feve-windsor",
@@ -1740,7 +1740,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.4,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/feve.jpg"
   },
   {
     "id": "legume-haricot-vert-contender",
@@ -1784,7 +1784,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.5,
     "notes": "Fixe l'azote, bon precedent pour cultures suivantes",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/haricot-vert.jpg"
   },
   {
     "id": "legume-haricot-vert-filet-maraichere",
@@ -1828,7 +1828,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.5,
     "notes": "Fixe l'azote, bon precedent pour cultures suivantes",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/haricot-vert.jpg"
   },
   {
     "id": "legume-haricot-vert-mangetout-cocardeau",
@@ -1872,7 +1872,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.5,
     "notes": "Fixe l'azote, bon precedent pour cultures suivantes",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/haricot-vert.jpg"
   },
   {
     "id": "legume-haricot-vert-serpette",
@@ -1916,7 +1916,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.5,
     "notes": "Fixe l'azote, bon precedent pour cultures suivantes",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/haricot-vert.jpg"
   },
   {
     "id": "legume-laitue-batavia",
@@ -1968,7 +1968,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Semis echelonnes toutes les 2-3 semaines pour recolte continue",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/laitue.jpg"
   },
   {
     "id": "legume-laitue-feuille-de-chene",
@@ -2020,7 +2020,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Semis echelonnes toutes les 2-3 semaines pour recolte continue",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/laitue.jpg"
   },
   {
     "id": "legume-laitue-gotte-pommee-precoce",
@@ -2068,7 +2068,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Semis echelonnes toutes les 2-3 semaines pour recolte continue",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/laitue.jpg"
   },
   {
     "id": "legume-laitue-reine-des-glaces",
@@ -2117,7 +2117,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Semis echelonnes toutes les 2-3 semaines pour recolte continue",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/laitue.jpg"
   },
   {
     "id": "legume-laitue-romaine",
@@ -2168,7 +2168,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Semis echelonnes toutes les 2-3 semaines pour recolte continue",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/laitue.jpg"
   },
   {
     "id": "legume-laitue-sucrine",
@@ -2218,7 +2218,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Semis echelonnes toutes les 2-3 semaines pour recolte continue | croquante",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/laitue.jpg"
   },
   {
     "id": "legume-mais-doux-golden-bantam",
@@ -2259,7 +2259,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Planter en carre (pollinisation par le vent)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/mais-doux.jpg"
   },
   {
     "id": "legume-mache-verte-de-cambrai",
@@ -2305,7 +2305,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.05,
     "notes": "Excellent legume d'hiver, comble les vides",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/mache.jpg"
   },
   {
     "id": "legume-navet-blanc-de-croissy",
@@ -2351,7 +2351,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "allonge",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/navet.jpg"
   },
   {
     "id": "legume-navet-boule-d-or",
@@ -2403,7 +2403,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/navet.jpg"
   },
   {
     "id": "legume-oignon-blanc-de-paris",
@@ -2451,7 +2451,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/oignon.jpg"
   },
   {
     "id": "legume-oignon-jaune-paille-des-vertus",
@@ -2500,7 +2500,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "bonne conservation",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/oignon.jpg"
   },
   {
     "id": "legume-oignon-rouge-de-roscoff",
@@ -2547,7 +2547,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "AOP Bretagne",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/oignon.jpg"
   },
   {
     "id": "legume-panais-demi-long-de-guernesey",
@@ -2594,7 +2594,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/panais.jpg"
   },
   {
     "id": "legume-patate-douce-beauregard",
@@ -2637,7 +2637,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1,
     "notes": "Necessite ete chaud et long",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/patate-douce.jpg"
   },
   {
     "id": "legume-petit-pois-douce-provence",
@@ -2682,7 +2682,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/petit-pois.jpg"
   },
   {
     "id": "legume-petit-pois-merveille-de-kelvedon",
@@ -2727,7 +2727,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/petit-pois.jpg"
   },
   {
     "id": "legume-petit-pois-petit-provencal",
@@ -2773,7 +2773,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/petit-pois.jpg"
   },
   {
     "id": "legume-poireau-bleu-de-solaise",
@@ -2821,7 +2821,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.25,
     "notes": "tres rustique, resiste au gel",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poireau.jpg"
   },
   {
     "id": "legume-poireau-gros-long-d-ete",
@@ -2868,7 +2868,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.25,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poireau.jpg"
   },
   {
     "id": "legume-poireau-d-hiver-geant",
@@ -2916,7 +2916,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.25,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poireau.jpg"
   },
   {
     "id": "legume-poivron-corno-di-toro",
@@ -2961,7 +2961,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1,
     "notes": "allonge",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poivron.jpg"
   },
   {
     "id": "legume-poivron-doux-d-espagne",
@@ -3006,7 +3006,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poivron.jpg"
   },
   {
     "id": "legume-poivron-yolo-wonder",
@@ -3051,7 +3051,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poivron.jpg"
   },
   {
     "id": "legume-pomme-de-terre-amandine",
@@ -3093,7 +3093,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Butter regulierement, ne pas replanter sur meme parcelle 3-4 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pomme-de-terre.jpg"
   },
   {
     "id": "legume-pomme-de-terre-belle-de-fontenay",
@@ -3134,7 +3134,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Butter regulierement, ne pas replanter sur meme parcelle 3-4 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pomme-de-terre.jpg"
   },
   {
     "id": "legume-pomme-de-terre-bintje",
@@ -3176,7 +3176,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Butter regulierement, ne pas replanter sur meme parcelle 3-4 ans | polyvalente",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pomme-de-terre.jpg"
   },
   {
     "id": "legume-pomme-de-terre-charlotte",
@@ -3218,7 +3218,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Butter regulierement, ne pas replanter sur meme parcelle 3-4 ans | chair ferme",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pomme-de-terre.jpg"
   },
   {
     "id": "legume-pomme-de-terre-monalisa",
@@ -3260,7 +3260,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Butter regulierement, ne pas replanter sur meme parcelle 3-4 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pomme-de-terre.jpg"
   },
   {
     "id": "legume-pomme-de-terre-ratte",
@@ -3302,7 +3302,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Butter regulierement, ne pas replanter sur meme parcelle 3-4 ans | gout fin",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pomme-de-terre.jpg"
   },
   {
     "id": "legume-pomme-de-terre-vitelotte-violette",
@@ -3344,7 +3344,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1.5,
     "notes": "Butter regulierement, ne pas replanter sur meme parcelle 3-4 ans | chair violette",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pomme-de-terre.jpg"
   },
   {
     "id": "legume-potiron-citrouille-musquee-de-provence",
@@ -3388,7 +3388,7 @@
     "perennial": false,
     "yieldPerPlantKg": 5,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/potiron-citrouille.jpg"
   },
   {
     "id": "legume-potiron-citrouille-rouge-vif-d-etampes",
@@ -3433,7 +3433,7 @@
     "perennial": false,
     "yieldPerPlantKg": 5,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/potiron-citrouille.jpg"
   },
   {
     "id": "legume-radis-18-jours",
@@ -3485,7 +3485,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.02,
     "notes": "Culture eclair, remplit les vides entre autres cultures | tres rapide",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/radis.jpg"
   },
   {
     "id": "legume-radis-gaudry",
@@ -3536,7 +3536,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.02,
     "notes": "Culture eclair, remplit les vides entre autres cultures",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/radis.jpg"
   },
   {
     "id": "legume-radis-noir-gros-long-d-hiver",
@@ -3583,7 +3583,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.02,
     "notes": "Culture eclair, remplit les vides entre autres cultures | conservation hivernale",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/radis.jpg"
   },
   {
     "id": "legume-radis-rond-rose-a-bout-blanc",
@@ -3634,7 +3634,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.02,
     "notes": "Culture eclair, remplit les vides entre autres cultures",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/radis.jpg"
   },
   {
     "id": "legume-roquette-cultivee",
@@ -3686,7 +3686,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/roquette.jpg"
   },
   {
     "id": "legume-tomate-ananas",
@@ -3730,7 +3730,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille) | bicolore",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-cerise-gardener-s-delight",
@@ -3775,7 +3775,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-coeur-de-boeuf",
@@ -3819,7 +3819,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-cornue-des-andes",
@@ -3863,7 +3863,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille) | chair charnue",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-green-zebra",
@@ -3907,7 +3907,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-marmande",
@@ -3951,7 +3951,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-noire-de-crimee",
@@ -3995,7 +3995,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille) | variete ancienne",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-roma-allongee",
@@ -4039,7 +4039,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille) | ideale sauce",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-rose-de-berne",
@@ -4082,7 +4082,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-tomate-saint-pierre",
@@ -4126,7 +4126,7 @@
     "perennial": false,
     "yieldPerPlantKg": 3,
     "notes": "Tuteurer, eviter apres pomme de terre (meme famille)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tomate.jpg"
   },
   {
     "id": "legume-topinambour-fuseau",
@@ -4171,7 +4171,7 @@
     "perennial": false,
     "yieldPerPlantKg": 1,
     "notes": "Tres envahissant, bien delimiter",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/topinambour.jpg"
   },
   {
     "id": "legume-echalote-grise-traditionnelle",
@@ -4212,7 +4212,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "gout prononce",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/echalote.jpg"
   },
   {
     "id": "legume-echalote-rose-de-jersey",
@@ -4252,7 +4252,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/echalote.jpg"
   },
   {
     "id": "fruit-abricotier-bergeron",
@@ -4293,7 +4293,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "Preferer climat sud ou expo abritee | reference francaise",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/abricotier.jpg"
   },
   {
     "id": "fruit-abricotier-luizet",
@@ -4333,7 +4333,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "Preferer climat sud ou expo abritee",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/abricotier.jpg"
   },
   {
     "id": "fruit-abricotier-precoce-de-saumur",
@@ -4373,7 +4373,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "Preferer climat sud ou expo abritee",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/abricotier.jpg"
   },
   {
     "id": "fruit-abricotier-rouge-du-roussillon",
@@ -4413,7 +4413,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "Preferer climat sud ou expo abritee",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/abricotier.jpg"
   },
   {
     "id": "fruit-amandier-ferragnes",
@@ -4454,7 +4454,7 @@
     "perennial": true,
     "yieldPerPlantKg": 5,
     "notes": "Climat sud, sensible au gel",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/amandier.jpg"
   },
   {
     "id": "fruit-cassissier-andega",
@@ -4498,7 +4498,7 @@
     "perennial": true,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cassissier.jpg"
   },
   {
     "id": "fruit-cassissier-noir-de-bourgogne",
@@ -4541,7 +4541,7 @@
     "perennial": true,
     "yieldPerPlantKg": 2,
     "notes": "reference francaise",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cassissier.jpg"
   },
   {
     "id": "fruit-cerisier-bigarreau-burlat",
@@ -4582,7 +4582,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cerisier.jpg"
   },
   {
     "id": "fruit-cerisier-bigarreau-napoleon",
@@ -4623,7 +4623,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cerisier.jpg"
   },
   {
     "id": "fruit-cerisier-coeur-de-pigeon",
@@ -4663,7 +4663,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cerisier.jpg"
   },
   {
     "id": "fruit-cerisier-griotte-de-montmorency",
@@ -4703,7 +4703,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "cerise acide, cuisine",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cerisier.jpg"
   },
   {
     "id": "fruit-cerisier-reverchon",
@@ -4744,7 +4744,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cerisier.jpg"
   },
   {
     "id": "fruit-chataignier-bouche-de-betizac",
@@ -4788,7 +4788,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/chataignier.jpg"
   },
   {
     "id": "fruit-citronnier-4-saisons",
@@ -4831,7 +4831,7 @@
     "perennial": true,
     "yieldPerPlantKg": 8,
     "notes": "Rentrer en hiver hors zone mediterraneenne | fleurit et fructifie presque toute l'annee",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/citronnier.jpg"
   },
   {
     "id": "fruit-cognassier-cognassier-de-provence",
@@ -4872,7 +4872,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cognassier.jpg"
   },
   {
     "id": "fruit-figuier-bourjassotte-grise",
@@ -4917,7 +4917,7 @@
     "perennial": true,
     "yieldPerPlantKg": 10,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/figuier.jpg"
   },
   {
     "id": "fruit-figuier-col-de-dame",
@@ -4962,7 +4962,7 @@
     "perennial": true,
     "yieldPerPlantKg": 10,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/figuier.jpg"
   },
   {
     "id": "fruit-figuier-violette-de-sollies",
@@ -5008,7 +5008,7 @@
     "perennial": true,
     "yieldPerPlantKg": 10,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/figuier.jpg"
   },
   {
     "id": "fruit-fraisier-charlotte",
@@ -5062,7 +5062,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans | remontante",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-ciflorette",
@@ -5116,7 +5116,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-cirafine",
@@ -5170,7 +5170,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-cleryssima",
@@ -5224,7 +5224,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-darselect",
@@ -5278,7 +5278,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-gariguette",
@@ -5332,7 +5332,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans | gout parfume, peu conservable",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-manon",
@@ -5386,7 +5386,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-mara-des-bois",
@@ -5442,7 +5442,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans | gout fraise des bois",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-ostara",
@@ -5498,7 +5498,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-fraisier-reine-des-vallees",
@@ -5554,7 +5554,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.3,
     "notes": "Multiplication facile par stolons, renouveler tous les 3 ans | variete ancienne",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/fraisier.jpg"
   },
   {
     "id": "fruit-framboisier-fertile-d-automne",
@@ -5603,7 +5603,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.5,
     "notes": "Palisser sur fil, tailler apres recolte",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/framboisier.jpg"
   },
   {
     "id": "fruit-framboisier-malling-promise",
@@ -5651,7 +5651,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.5,
     "notes": "Palisser sur fil, tailler apres recolte",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/framboisier.jpg"
   },
   {
     "id": "fruit-framboisier-tulameen",
@@ -5699,7 +5699,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.5,
     "notes": "Palisser sur fil, tailler apres recolte",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/framboisier.jpg"
   },
   {
     "id": "fruit-framboisier-zeva-remontant",
@@ -5748,7 +5748,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.5,
     "notes": "Palisser sur fil, tailler apres recolte",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/framboisier.jpg"
   },
   {
     "id": "fruit-groseillier-blanka-blanche",
@@ -5791,7 +5791,7 @@
     "perennial": true,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/groseillier.jpg"
   },
   {
     "id": "fruit-groseillier-jonkheer-van-tets",
@@ -5835,7 +5835,7 @@
     "perennial": true,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/groseillier.jpg"
   },
   {
     "id": "fruit-groseillier-versaillaise-rouge",
@@ -5878,7 +5878,7 @@
     "perennial": true,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/groseillier.jpg"
   },
   {
     "id": "fruit-kiwi-actinidia-hayward-femelle",
@@ -5923,7 +5923,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "necessite plant male pollinisateur",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/kiwi-actinidia.jpg"
   },
   {
     "id": "fruit-melon-cantaloup",
@@ -5968,7 +5968,7 @@
     "perennial": false,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/melon.jpg"
   },
   {
     "id": "fruit-melon-charentais",
@@ -6012,7 +6012,7 @@
     "perennial": false,
     "yieldPerPlantKg": 2,
     "notes": "reference francaise",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/melon.jpg"
   },
   {
     "id": "fruit-myrtillier-bluecrop",
@@ -6058,7 +6058,7 @@
     "perennial": true,
     "yieldPerPlantKg": 1.5,
     "notes": "Sol acide indispensable (terre de bruyere) | tres productive",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/myrtillier.jpg"
   },
   {
     "id": "fruit-myrtillier-duke",
@@ -6103,7 +6103,7 @@
     "perennial": true,
     "yieldPerPlantKg": 1.5,
     "notes": "Sol acide indispensable (terre de bruyere)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/myrtillier.jpg"
   },
   {
     "id": "fruit-myrtillier-patriot",
@@ -6148,7 +6148,7 @@
     "perennial": true,
     "yieldPerPlantKg": 1.5,
     "notes": "Sol acide indispensable (terre de bruyere) | adaptee au pot",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/myrtillier.jpg"
   },
   {
     "id": "fruit-murier-ronce-thornless-sans-epine",
@@ -6192,7 +6192,7 @@
     "perennial": true,
     "yieldPerPlantKg": 3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/murier-ronce.jpg"
   },
   {
     "id": "fruit-noisetier-merveille-de-bollwiller",
@@ -6236,7 +6236,7 @@
     "perennial": true,
     "yieldPerPlantKg": 3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/noisetier.jpg"
   },
   {
     "id": "fruit-noyer-franquette",
@@ -6280,7 +6280,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "Necessite beaucoup d'espace",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/noyer.jpg"
   },
   {
     "id": "fruit-olivier-picholine",
@@ -6324,7 +6324,7 @@
     "perennial": true,
     "yieldPerPlantKg": 10,
     "notes": "Climat mediterraneen ou proteger l'hiver ailleurs",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/olivier.jpg"
   },
   {
     "id": "fruit-pasteque-sugar-baby",
@@ -6369,7 +6369,7 @@
     "perennial": false,
     "yieldPerPlantKg": 5,
     "notes": "petit format adapte au jardin",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pasteque.jpg"
   },
   {
     "id": "fruit-poirier-beurre-hardy",
@@ -6410,7 +6410,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poirier.jpg"
   },
   {
     "id": "fruit-poirier-comice",
@@ -6451,7 +6451,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "tres fondante",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poirier.jpg"
   },
   {
     "id": "fruit-poirier-conference",
@@ -6492,7 +6492,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "bonne conservation",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poirier.jpg"
   },
   {
     "id": "fruit-poirier-louise-bonne-d-avranches",
@@ -6532,7 +6532,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poirier.jpg"
   },
   {
     "id": "fruit-poirier-passe-crassane",
@@ -6573,7 +6573,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "conservation hivernale",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poirier.jpg"
   },
   {
     "id": "fruit-poirier-williams",
@@ -6614,7 +6614,7 @@
     "perennial": true,
     "yieldPerPlantKg": 20,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/poirier.jpg"
   },
   {
     "id": "fruit-pommier-api-rouge",
@@ -6655,7 +6655,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins | petit fruit ancien",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-ariane",
@@ -6695,7 +6695,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins | resistante tavelure",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-belle-de-boskoop",
@@ -6736,7 +6736,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins | excellente conservation",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-calville-blanc-d-hiver",
@@ -6777,7 +6777,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-chantecler",
@@ -6818,7 +6818,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins | resistant maladies",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-gala",
@@ -6859,7 +6859,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-golden-delicious",
@@ -6900,7 +6900,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-reine-des-reinettes",
@@ -6941,7 +6941,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-pommier-reinette-clochard",
@@ -6983,7 +6983,7 @@
     "perennial": true,
     "yieldPerPlantKg": 25,
     "notes": "Choisir porte-greffe selon espace: nain (M9) pour pots/petits jardins | bonne conservation",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pommier.jpg"
   },
   {
     "id": "fruit-prunier-mirabelle-de-nancy",
@@ -7024,7 +7024,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/prunier.jpg"
   },
   {
     "id": "fruit-prunier-quetsche-d-alsace",
@@ -7064,7 +7064,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "ideale confiture/eau-de-vie",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/prunier.jpg"
   },
   {
     "id": "fruit-prunier-reine-claude-doree",
@@ -7105,7 +7105,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/prunier.jpg"
   },
   {
     "id": "fruit-prunier-reine-claude-d-oullins",
@@ -7145,7 +7145,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/prunier.jpg"
   },
   {
     "id": "fruit-pecher-amsden",
@@ -7186,7 +7186,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "Sensible cloque du pecher",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pecher.jpg"
   },
   {
     "id": "fruit-pecher-redhaven",
@@ -7227,7 +7227,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "Sensible cloque du pecher | tres repandue",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pecher.jpg"
   },
   {
     "id": "fruit-pecher-sanguine-de-savoie",
@@ -7267,7 +7267,7 @@
     "perennial": true,
     "yieldPerPlantKg": 15,
     "notes": "Sensible cloque du pecher",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pecher.jpg"
   },
   {
     "id": "fruit-rhubarbe-victoria",
@@ -7312,7 +7312,7 @@
     "perennial": true,
     "yieldPerPlantKg": 2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/rhubarbe.jpg"
   },
   {
     "id": "fruit-vigne-raisin-de-table-cardinal",
@@ -7359,7 +7359,7 @@
     "perennial": true,
     "yieldPerPlantKg": 8,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/vigne-raisin-de-table.jpg"
   },
   {
     "id": "fruit-vigne-raisin-de-table-chasselas-dore",
@@ -7405,7 +7405,7 @@
     "perennial": true,
     "yieldPerPlantKg": 8,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/vigne-raisin-de-table.jpg"
   },
   {
     "id": "fruit-vigne-raisin-de-table-muscat-de-hambourg",
@@ -7452,7 +7452,7 @@
     "perennial": true,
     "yieldPerPlantKg": 8,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/vigne-raisin-de-table.jpg"
   },
   {
     "id": "aromate-aneth-commun",
@@ -7497,7 +7497,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/aneth.jpg"
   },
   {
     "id": "aromate-basilic-citron",
@@ -7545,7 +7545,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.2,
     "notes": "Craint le froid, tres sensible au gel | note citronnee",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/basilic.jpg"
   },
   {
     "id": "aromate-basilic-fin-vert-petites-feuilles",
@@ -7593,7 +7593,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.2,
     "notes": "Craint le froid, tres sensible au gel",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/basilic.jpg"
   },
   {
     "id": "aromate-basilic-grand-vert",
@@ -7641,7 +7641,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.2,
     "notes": "Craint le froid, tres sensible au gel",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/basilic.jpg"
   },
   {
     "id": "aromate-basilic-pourpre",
@@ -7689,7 +7689,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.2,
     "notes": "Craint le froid, tres sensible au gel | decoratif",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/basilic.jpg"
   },
   {
     "id": "aromate-basilic-thai",
@@ -7737,7 +7737,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.2,
     "notes": "Craint le froid, tres sensible au gel | cuisine asiatique",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/basilic.jpg"
   },
   {
     "id": "aromate-cerfeuil-commun",
@@ -7788,7 +7788,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.05,
     "notes": "Monte vite, semis echelonnes conseilles",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cerfeuil.jpg"
   },
   {
     "id": "aromate-ciboulette-commune",
@@ -7837,7 +7837,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/ciboulette.jpg"
   },
   {
     "id": "aromate-coriandre-commune",
@@ -7887,7 +7887,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.08,
     "notes": "Monte vite en graine par temps chaud",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/coriandre.jpg"
   },
   {
     "id": "aromate-estragon-francais",
@@ -7934,7 +7934,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.15,
     "notes": "meilleur gout que l'estragon de Russie",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/estragon.jpg"
   },
   {
     "id": "aromate-laurier-sauce-commun",
@@ -7988,7 +7988,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/laurier-sauce.jpg"
   },
   {
     "id": "aromate-lavande-papillon-stoechas",
@@ -8034,7 +8034,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "decorative",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/lavande.jpg"
   },
   {
     "id": "aromate-lavande-vraie-angustifolia",
@@ -8080,7 +8080,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/lavande.jpg"
   },
   {
     "id": "aromate-liveche-commune",
@@ -8125,7 +8125,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/liveche.jpg"
   },
   {
     "id": "aromate-marjolaine-commune",
@@ -8172,7 +8172,7 @@
     "perennial": false,
     "yieldPerPlantKg": 0.1,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/marjolaine.jpg"
   },
   {
     "id": "aromate-menthe-marocaine",
@@ -8222,7 +8222,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/menthe.jpg"
   },
   {
     "id": "aromate-menthe-poivree",
@@ -8272,7 +8272,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/menthe.jpg"
   },
   {
     "id": "aromate-menthe-verte",
@@ -8322,7 +8322,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/menthe.jpg"
   },
   {
     "id": "aromate-origan-commun-marjolaine-sauvage",
@@ -8368,7 +8368,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/origan.jpg"
   },
   {
     "id": "aromate-persil-frise",
@@ -8414,7 +8414,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.15,
     "notes": "Levee lente, tremper les graines",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/persil.jpg"
   },
   {
     "id": "aromate-persil-plat-italien",
@@ -8460,7 +8460,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.15,
     "notes": "Levee lente, tremper les graines | plus parfume",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/persil.jpg"
   },
   {
     "id": "aromate-romarin-officinal",
@@ -8514,7 +8514,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.3,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/romarin.jpg"
   },
   {
     "id": "aromate-sauge-officinale",
@@ -8570,7 +8570,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.2,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/sauge.jpg"
   },
   {
     "id": "aromate-thym-citron",
@@ -8627,7 +8627,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.15,
     "notes": "note citronnee",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/thym.jpg"
   },
   {
     "id": "aromate-thym-commun",
@@ -8684,7 +8684,7 @@
     "perennial": true,
     "yieldPerPlantKg": 0.15,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/thym.jpg"
   },
   {
     "id": "fleur-begonia-tubereux-semperflorens",
@@ -8731,7 +8731,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/begonia.jpg"
   },
   {
     "id": "fleur-capucine-naine-grimpante",
@@ -8772,7 +8772,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "Feuilles et fleurs comestibles",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/capucine.jpg"
   },
   {
     "id": "fleur-clematite-nombreux-cultivars-grimpants",
@@ -8814,7 +8814,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/clematite.jpg"
   },
   {
     "id": "fleur-cosmos-simple-double-sensation",
@@ -8855,7 +8855,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/cosmos.jpg"
   },
   {
     "id": "fleur-dahlia-nombreux-cultivars-pompon-cactus-decoratif",
@@ -8898,7 +8898,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "Rentrer les tubercules hors gel",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/dahlia.jpg"
   },
   {
     "id": "fleur-glaieul-nombreux-coloris",
@@ -8938,7 +8938,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/glaieul.jpg"
   },
   {
     "id": "fleur-geranium-zonal-lierre-odorant",
@@ -8984,7 +8984,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/geranium.jpg"
   },
   {
     "id": "fleur-hortensia-nombreux-cultivars-couleur-selon-ph",
@@ -9032,7 +9032,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/hortensia.jpg"
   },
   {
     "id": "fleur-iris-barbu-de-siberie",
@@ -9071,7 +9071,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/iris.jpg"
   },
   {
     "id": "fleur-jonquille-nombreux-cultivars",
@@ -9110,7 +9110,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/jonquille.jpg"
   },
   {
     "id": "fleur-lys-oriental-asiatique",
@@ -9150,7 +9150,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/lys.jpg"
   },
   {
     "id": "fleur-muguet-traditionnel",
@@ -9189,7 +9189,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "Toxique, aime l'ombre",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/muguet.jpg"
   },
   {
     "id": "fleur-narcisse-nombreux-cultivars",
@@ -9229,7 +9229,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/narcisse.jpg"
   },
   {
     "id": "fleur-pensee-nombreux-coloris",
@@ -9278,7 +9278,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "Floraison hivernale possible",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pensee.jpg"
   },
   {
     "id": "fleur-pivoine-nombreux-cultivars-herbacee-arbustive",
@@ -9316,7 +9316,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/pivoine.jpg"
   },
   {
     "id": "fleur-primevere-nombreux-coloris",
@@ -9359,7 +9359,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/primevere.jpg"
   },
   {
     "id": "fleur-petunia-nombreux-cultivars-retombants-dresses",
@@ -9406,7 +9406,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/petunia.jpg"
   },
   {
     "id": "fleur-rosier-nombreux-cultivars-buisson-grimpant-tige",
@@ -9458,7 +9458,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "Des milliers de varietes; choisir selon usage (haie, grimpant, pot)",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/rosier.jpg"
   },
   {
     "id": "fleur-rosier-tremiere-simple",
@@ -9498,7 +9498,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/rosier-tremiere.jpg"
   },
   {
     "id": "fleur-tournesol-petit-soleil-geant-russe-teddy-bear",
@@ -9536,7 +9536,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tournesol.jpg"
   },
   {
     "id": "fleur-tulipe-nombreux-cultivars-simple-double-perroquet",
@@ -9576,7 +9576,7 @@
     "perennial": true,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/tulipe.jpg"
   },
   {
     "id": "fleur-zinnia-nain-geant-cactus",
@@ -9616,7 +9616,7 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/zinnia.jpg"
   },
   {
     "id": "fleur-illet-d-inde-tagete-simple-double-nain",
@@ -9661,6 +9661,6 @@
     "perennial": false,
     "yieldPerPlantKg": null,
     "notes": "Repulsif nematodes, bon compagnon potager",
-    "imageUrl": null
+    "imageUrl": "/catalog-images/oeillet-d-inde-tagete.jpg"
   }
 ]

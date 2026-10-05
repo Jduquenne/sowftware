@@ -18,7 +18,7 @@ function EntryVisual({ entry, className, iconSize }: { entry: CatalogEntry; clas
   if (entry.imageUrl && !imageFailed) {
     return (
       <img
-        src={entry.imageUrl}
+        src={`${import.meta.env.BASE_URL}${entry.imageUrl.slice(1)}`}
         alt={entry.nomCommun}
         onError={() => setImageFailed(true)}
         className={`object-cover ${className}`}

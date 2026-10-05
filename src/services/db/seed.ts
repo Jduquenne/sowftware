@@ -5,7 +5,7 @@ import catalogSeedData from '../../data/catalog.seed.json'
 // Bump on every change to catalog.seed.json or to the transform logic above —
 // existing installs compare against this to decide whether to reseed, so an
 // unbumped version silently keeps stale (or empty) data forever.
-export const SEED_VERSION = 4
+export const SEED_VERSION = 8
 const SEED_VERSION_KEY = 'catalogSeedVersion'
 
 /**
