@@ -22,6 +22,9 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'prompt',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,woff2}'],
+      },
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: 'Jardin Planner',
@@ -29,7 +32,7 @@ export default defineConfig({
         description: 'Planifiez semis, récoltes, disposition et arrosage de votre jardin.',
         lang: 'fr',
         theme_color: '#166534',
-        background_color: '#ffffff',
+        background_color: '#f5f4ec',
         display: 'standalone',
         start_url: base,
         scope: base,

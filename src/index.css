@@ -1,6 +1,11 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/figtree';
 
 @theme {
+  --font-sans: 'Figtree Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+
   --color-neutral-50: oklch(0.985 0.004 150);
   --color-neutral-100: oklch(0.970 0.006 150);
   --color-neutral-200: oklch(0.922 0.020 150);
@@ -12,4 +17,45 @@
   --color-neutral-800: oklch(0.269 0.017 150);
   --color-neutral-900: oklch(0.205 0.013 150);
   --color-neutral-950: oklch(0.145 0.010 150);
+
+  --color-forest-50: #eef7ef;
+  --color-forest-100: #dcefdf;
+  --color-forest-200: #b9dfc0;
+  --color-forest-300: #8ccb98;
+  --color-forest-400: #5aae6c;
+  --color-forest-500: #36904c;
+  --color-forest-600: #22773a;
+  --color-forest-700: #1b5f30;
+  --color-forest-800: #164a29;
+  --color-forest-900: #123d23;
+  --color-forest-950: #0b2716;
+
+  --color-cream: #f5f4ec;
+  --color-cream-dot: #e3e2d6;
+  --color-line: #e7e5da;
+
+  --color-sun-100: #fcf0c8;
+  --color-sun-300: #f6d77a;
+  --color-sun-500: #e6a722;
+  --color-sun-800: #6e4a05;
+
+  --color-water-50: #e6eff8;
+  --color-water-600: #275f99;
+  --color-water-700: #1f4f82;
+
+  --shadow-card: 0 1px 2px rgb(22 74 41 / 0.04), 0 8px 24px -12px rgb(22 74 41 / 0.12);
+  --shadow-float: 0 2px 4px rgb(22 74 41 / 0.06), 0 20px 48px -16px rgb(22 74 41 / 0.28);
+}
+
+@utility bg-dots {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(var(--color-cream-dot) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-forest-950);
+  }
 }
