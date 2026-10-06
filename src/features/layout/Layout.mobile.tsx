@@ -14,7 +14,7 @@ import { EmptyState } from '../../ui/EmptyState'
 import { PageHeader } from '../../ui/PageHeader'
 import { Badge } from '../../ui/Badge'
 import { ListRow, ListRowGroup } from '../../ui/ListRow'
-import { EntryVisual } from '../../ui/CatalogCard'
+import { EntryThumb } from '../../ui/EntryThumb'
 import { expositionLabel, plotTypeLabel } from '../plots/logic/plotTypes'
 
 export function LayoutMobile() {
@@ -128,11 +128,7 @@ export function LayoutMobile() {
               return (
                 <ListRow
                   key={placement.id}
-                  leading={
-                    <div className="relative size-12 shrink-0 overflow-hidden rounded-xl bg-forest-50">
-                      {entry && <EntryVisual entry={entry} className="absolute inset-0 h-full w-full" iconSize={20} />}
-                    </div>
-                  }
+                  leading={<EntryThumb entry={entry} />}
                   title={entry?.nomCommun}
                   subtitle={`${entry?.variete ?? ''} · espacement ${entry?.espacementRaw || '—'} cm`}
                   trailing={

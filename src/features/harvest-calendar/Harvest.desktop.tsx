@@ -1,22 +1,28 @@
 import { useState } from 'react'
-import { Shovel } from 'lucide-react'
+import { CalendarDays, LayoutGrid } from 'lucide-react'
 import { useStore } from '../../store'
-import { filterByCategory, filterByGrowingLocation, filterBySearch, listCategories } from '../catalog/logic/filters'
+import { filterByCategory, filterByGrowingLocation, filterBySearch, listCategories, sortByName } from '../catalog/logic/filters'
 import { getHarvestForMonth, harvestCountsByMonth } from './logic/harvest'
-import { getCurrentMonth, MONTH_NAMES_SHORT } from '../../utils/months'
+import { getCurrentMonth, monthName } from '../../utils/months'
+import { useSearchParamState } from '../../utils/useSearchParamState'
+import { PageHeader } from '../../ui/PageHeader'
+import { Segmented } from '../../ui/Segmented'
+import { PanelCard } from '../../ui/PanelCard'
+import { LocationToggle } from '../../ui/LocationToggle'
 import { CategoryFilterList } from '../../ui/CategoryFilter'
 import { MonthPicker } from '../../ui/MonthPicker'
-import { FilterChips, type FilterOption } from '../../ui/Filter'
+import type { FilterOption } from '../../ui/Filter'
 import { TextInput } from '../../ui/Input'
 import { Badge } from '../../ui/Badge'
 import { CatalogCard } from '../../ui/CatalogCard'
+import { YearTable } from '../../ui/YearTable'
 import { EmptyState } from '../../ui/EmptyState'
-import { FlowerPot } from '../../ui/icons/FlowerPot'
-import { useSearchParamState } from '../../utils/useSearchParamState'
 
-const VIEW_MODE_OPTIONS: FilterOption<'month' | 'year'>[] = [
-  { value: 'month', label: 'Vue mensuelle', activeClass: 'bg-green-800 text-white' },
-  { value: 'year', label: 'Vue annuelle', activeClass: 'bg-green-800 text-white' },
+type ViewMode = 'month' | 'year'
+
+const VIEW_OPTIONS: FilterOption<ViewMode>[] = [
+  { value: 'month', label: 'Par mois', icon: LayoutGrid },
+  { value: 'year', label: "Sur l'année", icon: CalendarDays },
 ]
 
 export function HarvestDesktop() {
@@ -26,12 +32,11 @@ export function HarvestDesktop() {
   const [potActive, setPotActive] = useState(false)
   const [groundActive, setGroundActive] = useState(false)
   const [search, setSearch] = useState('')
-  const [viewMode, setViewMode] = useSearchParamState<'month' | 'year'>('view', 'month')
+  const [viewMode, setViewMode] = useSearchParamState<ViewMode>('view', 'month')
 
   const categories = listCategories(catalog)
-  const filtered = filterBySearch(
-    filterByGrowingLocation(filterByCategory(catalog, categorie), potActive, groundActive),
-    search,
+  const filtered = sortByName(
+    filterBySearch(filterByGrowingLocation(filterByCategory(catalog, categorie), potActive, groundActive), search),
   )
 
   const monthItems = getHarvestForMonth(filtered, month)
@@ -39,125 +44,83 @@ export function HarvestDesktop() {
   const yearRows = filtered.filter((entry) => entry.moisRecolte.length > 0)
 
   return (
-    <div className="flex h-full">
-      <aside className="w-40 shrink-0 overflow-y-auto border-r border-neutral-200 p-3">
-        <TextInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Rechercher…" />
+    <div className="flex h-full flex-col">
+      <PageHeader
+        title="Récolte"
+        subtitle="Calendrier des récoltes"
+        actions={<Segmented options={VIEW_OPTIONS} selected={viewMode} onSelect={setViewMode} />}
+      />
 
-        <div className="mb-2 mt-4 text-xs font-semibold uppercase text-neutral-400">Catégorie</div>
-        <CategoryFilterList categories={categories} selected={categorie} onSelect={setCategorie} />
+      <div className="flex min-h-0 flex-1 gap-8 px-10 pt-8">
+        <aside className="w-64 shrink-0 space-y-5 overflow-y-auto pb-8">
+          <PanelCard title="Recherche">
+            <TextInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Rechercher…" />
+          </PanelCard>
+          <PanelCard title="Catégories">
+            <CategoryFilterList categories={categories} selected={categorie} onSelect={setCategorie} />
+          </PanelCard>
+          <PanelCard title="Emplacement">
+            <LocationToggle
+              potActive={potActive}
+              groundActive={groundActive}
+              onTogglePot={() => setPotActive((v) => !v)}
+              onToggleGround={() => setGroundActive((v) => !v)}
+            />
+          </PanelCard>
+        </aside>
 
-        <div className="mb-2 mt-5 text-xs font-semibold uppercase text-neutral-400">Emplacement</div>
-        <div className="flex gap-1">
-          <button
-            type="button"
-            onClick={() => setPotActive((v) => !v)}
-            title="En pot"
-            aria-pressed={potActive}
-            className={`flex items-center gap-1.5 rounded p-1.5 text-xs ${
-              potActive ? 'bg-emerald-600 text-white' : 'bg-neutral-100 text-neutral-400'
-            }`}
-          >
-            <FlowerPot size={15} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setGroundActive((v) => !v)}
-            title="En terre"
-            aria-pressed={groundActive}
-            className={`flex items-center gap-1.5 rounded p-1.5 text-xs ${
-              groundActive ? 'bg-emerald-600 text-white' : 'bg-neutral-100 text-neutral-400'
-            }`}
-          >
-            <Shovel size={15} />
-          </button>
-        </div>
-      </aside>
-
-      <div className="flex min-h-0 flex-1 flex-col p-6">
-        <div className="mb-4 flex shrink-0 items-baseline justify-between">
-          <h1 className="text-xl font-semibold text-green-800">Calendrier de récolte</h1>
-          <span className="text-sm text-neutral-400">
-            {viewMode === 'month' ? monthItems.length : yearRows.length} éléments
-          </span>
-        </div>
-
-        <div className="mb-4 shrink-0">
-          <FilterChips options={VIEW_MODE_OPTIONS} selected={viewMode} onSelect={setViewMode} />
-        </div>
-
-        {viewMode === 'month' ? (
-          <>
-            <MonthPicker month={month} onSelect={setMonth} counts={monthCounts} />
-            <div className="min-h-0 flex-1 overflow-y-auto">
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                {monthItems.map((entry) => (
-                  <CatalogCard
-                    key={entry.id}
-                    entry={entry}
-                    variant="vertical"
-                    extra={
-                      entry.saisonRecolte && (
-                        <Badge className="bg-orange-100 text-orange-800">{entry.saisonRecolte}</Badge>
-                      )
-                    }
-                  />
-                ))}
-              </div>
-              {monthItems.length === 0 && (
-                <EmptyState className="mt-6">Rien pour ce mois avec ces filtres.</EmptyState>
-              )}
-            </div>
-          </>
-        ) : (
-          <div className="flex min-h-0 flex-1 flex-col">
-            <div className="mb-3 flex shrink-0 items-center gap-4 text-xs text-neutral-500">
-              <span className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-orange-500" /> Récolte
+        <div className="flex min-h-0 flex-1 flex-col">
+          {viewMode === 'month' && <MonthPicker month={month} onSelect={setMonth} counts={monthCounts} />}
+          <div className="mb-5 flex shrink-0 items-baseline justify-between">
+            <h2 className="font-display text-3xl font-semibold text-forest-900">
+              {viewMode === 'month' ? `À récolter en ${monthName(month).toLowerCase()}` : "Toute l'année"}
+            </h2>
+            {viewMode === 'year' ? (
+              <span className="flex items-center gap-1.5 text-sm text-neutral-600">
+                <span className="size-2.5 rounded-full bg-sun-500" />
+                Récolte
               </span>
-            </div>
-            <div className="min-h-0 flex-1 overflow-auto">
-              <table className="w-full table-fixed text-left text-sm">
-                <thead>
-                  <tr className="text-neutral-400">
-                    <th className="sticky top-0 z-10 w-56 border-b border-neutral-200 bg-neutral-50 pb-2 pr-2 pt-1 font-medium">
-                      Plante
-                    </th>
-                    {MONTH_NAMES_SHORT.map((m) => (
-                      <th
-                        key={m}
-                        title={m}
-                        className="sticky top-0 z-10 border-b border-neutral-200 bg-neutral-50 pb-2 pt-1 text-center font-medium"
-                      >
-                        {m[0]}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-neutral-100">
-                  {yearRows.map((entry) => (
-                    <tr key={entry.id}>
-                      <td className="w-56 py-1.5 pr-2 text-neutral-800">
-                        {entry.nomCommun} <span className="text-neutral-400">— {entry.variete}</span>
-                      </td>
-                      {Array.from({ length: 12 }, (_, i) => i + 1).map((m) => (
-                        <td key={m} className="py-1.5">
-                          <div className="flex items-center justify-center">
-                            {entry.moisRecolte.includes(m) && (
-                              <span className="h-2 w-2 rounded-full bg-orange-500" />
-                            )}
-                          </div>
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              {yearRows.length === 0 && (
-                <EmptyState className="mt-6">Aucune plante ne correspond à ces filtres.</EmptyState>
-              )}
-            </div>
+            ) : (
+              <span className="text-sm text-neutral-500">{monthItems.length} plantes</span>
+            )}
           </div>
-        )}
+
+          <div className="min-h-0 flex-1 overflow-y-auto pb-8">
+            {viewMode === 'month' ? (
+              <>
+                <div className="grid grid-cols-2 gap-5 lg:grid-cols-3 2xl:grid-cols-4">
+                  {monthItems.map((entry) => (
+                    <CatalogCard
+                      key={entry.id}
+                      entry={entry}
+                      variant="vertical"
+                      extra={
+                        entry.saisonRecolte && (
+                          <Badge pill className="bg-sun-100 text-sun-800">
+                            {entry.saisonRecolte}
+                          </Badge>
+                        )
+                      }
+                    />
+                  ))}
+                </div>
+                {monthItems.length === 0 && <EmptyState className="mt-6">Rien pour ce mois avec ces filtres.</EmptyState>}
+              </>
+            ) : (
+              <>
+                <YearTable
+                  entries={yearRows}
+                  renderMonth={(entry, m) =>
+                    entry.moisRecolte.includes(m) && <span className="h-2.5 w-full max-w-6 rounded-full bg-sun-500" />
+                  }
+                />
+                {yearRows.length === 0 && (
+                  <EmptyState className="mt-6">Aucune plante ne correspond à ces filtres.</EmptyState>
+                )}
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -242,6 +242,13 @@ feature**, rather than copy-pasting the class string again.
 - `SectionCard` / `SectionHeading` — white rounded section with icon-tile +
   serif heading + optional badge/action; `StatCard` — big-number tile.
 - `IconTile` — tinted rounded icon square; use it instead of hand-rolling one.
+- `EntryThumb` — catalog photo thumbnail (falls back to the category gradient).
+- `PanelCard` — white rounded card with an uppercase eyebrow title; the
+  desktop filter asides (Catalogue, Semis, Récolte) stack these.
+- `LocationToggle` — the En pot / En terre filter pair.
+- `TableCard` + `TableHead`/`TableBody`/`Th`/`Td`/`rowClass` — shared desktop
+  table *styling* (columns stay per screen); `YearTable` — plant × 12-month
+  table with the current month highlighted (Semis/Récolte year view).
 - `Segmented` — pill segmented control for exclusive view modes (Catalogue
   Grille/Tableau); prefer it over `FilterChips` for a 2–3-way view switch.
 - `YearStrip` — 12-month segmented rows with the current month outlined;
@@ -255,8 +262,8 @@ feature**, rather than copy-pasting the class string again.
   doesn't use it (see Layout assistant section) — a full-width grid needs the
   space a fixed aside would take.
 
-Deliberately left un-genericized: desktop `<table>`s (columns differ too much
-per screen to be worth a generic table component) and the `Layout` placement
+Deliberately left un-genericized: desktop `<table>` columns (they differ too
+much per screen — only the styling is shared via `ui/Table`) and the `Layout` placement
 grid (too feature-specific to generalize).
 
 ## PWA (install / update / offline)

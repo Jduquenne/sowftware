@@ -6,6 +6,7 @@ import { getCategoryStyle } from '../../utils/categoryStyle'
 import { useSearchParamState } from '../../utils/useSearchParamState'
 import { PageHeader } from '../../ui/PageHeader'
 import { Segmented } from '../../ui/Segmented'
+import { PanelCard } from '../../ui/PanelCard'
 import { CategoryFilterList } from '../../ui/CategoryFilter'
 import { CatalogCard } from '../../ui/CatalogCard'
 import type { FilterOption } from '../../ui/Filter'
@@ -37,15 +38,14 @@ export function CatalogDesktop() {
 
       <div className="flex min-h-0 flex-1 gap-8 px-10 pt-8">
         <aside className="w-64 shrink-0 space-y-5 overflow-y-auto pb-8">
-          <div className="rounded-3xl border border-line bg-white p-4 shadow-card">
-            <div className="mb-3 px-2 text-xs font-bold tracking-[0.15em] text-neutral-500 uppercase">Catégories</div>
+          <PanelCard title="Catégories">
             <CategoryFilterList
               categories={categories}
               selected={categorie}
               onSelect={setCategorie}
               counts={countByCategory(catalog)}
             />
-          </div>
+          </PanelCard>
           <CatalogLegend />
         </aside>
 

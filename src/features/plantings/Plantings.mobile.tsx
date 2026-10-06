@@ -1,10 +1,14 @@
 import { useState } from 'react'
+import { Plus } from 'lucide-react'
 import { useStore } from '../../store'
 import { PlantingForm } from './PlantingForm'
 import { WateringSection } from './WateringSection'
 import { plantingStatusLabel } from './logic/lifecycle'
+import { statusBadgeClass } from './logic/statusStyle'
+import { PageHeader } from '../../ui/PageHeader'
 import { Button } from '../../ui/Button'
 import { Badge } from '../../ui/Badge'
+import { EntryThumb } from '../../ui/EntryThumb'
 import { EmptyState } from '../../ui/EmptyState'
 import { ListRow, ListRowGroup } from '../../ui/ListRow'
 
@@ -17,23 +21,21 @@ export function PlantingsMobile() {
   const removePlanting = useStore((s) => s.removePlanting)
   const [mode, setMode] = useState<'list' | 'create' | string>('list')
 
-  const catalogName = (id: string) => {
-    const entry = catalogById.get(id)
-    return entry ? `${entry.nomCommun} — ${entry.variete}` : 'Plante inconnue'
-  }
-  const plotName = (id: string | null) => plots.find((p) => p.id === id)?.name ?? '—'
+  const plotName = (id: string | null) => plots.find((p) => p.id === id)?.name ?? 'Sans parcelle'
 
   if (mode === 'create') {
     return (
-      <div className="p-4">
-        <h1 className="mb-3 text-lg font-semibold text-green-800">Nouvelle plantation</h1>
-        <PlantingForm
-          onSubmit={async (input) => {
-            await addPlanting(input)
-            setMode('list')
-          }}
-          onCancel={() => setMode('list')}
-        />
+      <div>
+        <PageHeader variant="mobile" title="Nouvelle plantation" />
+        <div className="px-5 pb-4">
+          <PlantingForm
+            onSubmit={async (input) => {
+              await addPlanting(input)
+              setMode('list')
+            }}
+            onCancel={() => setMode('list')}
+          />
+        </div>
       </div>
     )
   }
@@ -41,45 +43,67 @@ export function PlantingsMobile() {
   const editingPlanting = plantings.find((p) => p.id === mode)
   if (editingPlanting) {
     return (
-      <div className="p-4">
-        <h1 className="mb-3 text-lg font-semibold text-green-800">Modifier la plantation</h1>
-        <PlantingForm
-          initial={editingPlanting}
-          onSubmit={async (input) => {
-            await editPlanting(editingPlanting.id, input)
-            setMode('list')
-          }}
-          onCancel={() => setMode('list')}
-          onDelete={async () => {
-            await removePlanting(editingPlanting.id)
-            setMode('list')
-          }}
+      <div>
+        <PageHeader
+          variant="mobile"
+          title="Modifier la plantation"
+          subtitle={catalogById.get(editingPlanting.catalogId)?.nomCommun}
         />
-        <WateringSection plantingId={editingPlanting.id} />
+        <div className="px-5 pb-4">
+          <PlantingForm
+            initial={editingPlanting}
+            onSubmit={async (input) => {
+              await editPlanting(editingPlanting.id, input)
+              setMode('list')
+            }}
+            onCancel={() => setMode('list')}
+            onDelete={async () => {
+              await removePlanting(editingPlanting.id)
+              setMode('list')
+            }}
+          />
+          <WateringSection plantingId={editingPlanting.id} />
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="p-4">
-      <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold text-green-800">Mes plantations</h1>
-        <Button onClick={() => setMode('create')}>+ Nouvelle</Button>
+    <div>
+      <PageHeader
+        variant="mobile"
+        title="Plantations"
+        actions={
+          <Button size="sm" onClick={() => setMode('create')}>
+            <Plus size={14} />
+            Nouvelle
+          </Button>
+        }
+      />
+
+      <div className="px-5 pb-4">
+        <ListRowGroup>
+          {plantings.map((planting) => {
+            const entry = catalogById.get(planting.catalogId)
+            return (
+              <ListRow
+                key={planting.id}
+                leading={<EntryThumb entry={entry} />}
+                title={entry ? `${entry.nomCommun} · ${entry.variete}` : 'Plante inconnue'}
+                subtitle={plotName(planting.plotId)}
+                trailing={
+                  <Badge pill className={statusBadgeClass(planting.status)}>
+                    {plantingStatusLabel(planting.status)}
+                  </Badge>
+                }
+                onClick={() => setMode(planting.id)}
+              />
+            )
+          })}
+        </ListRowGroup>
+
+        {plantings.length === 0 && <EmptyState className="mt-4">Aucune plantation pour le moment.</EmptyState>}
       </div>
-
-      <ListRowGroup className="mt-3">
-        {plantings.map((planting) => (
-          <ListRow
-            key={planting.id}
-            title={catalogName(planting.catalogId)}
-            subtitle={plotName(planting.plotId)}
-            trailing={<Badge className="bg-green-100 text-green-800">{plantingStatusLabel(planting.status)}</Badge>}
-            onClick={() => setMode(planting.id)}
-          />
-        ))}
-      </ListRowGroup>
-
-      {plantings.length === 0 && <EmptyState className="mt-6">Aucune plantation pour le moment.</EmptyState>}
     </div>
   )
 }

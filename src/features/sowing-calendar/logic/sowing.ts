@@ -31,11 +31,11 @@ export function hasSowingData(entry: CatalogEntry): boolean {
 
 const KIND_LABELS: Record<SowingKind, string> = { semis: 'Semis', bouture: 'Bouture' }
 const KIND_CLASSES: Record<SowingKind, string> = {
-  semis: 'bg-green-100 text-green-800',
+  semis: 'bg-forest-50 text-forest-700',
   bouture: 'bg-teal-100 text-teal-800',
 }
 const KIND_ACTIVE_CLASSES: Record<SowingKind, string> = {
-  semis: 'bg-green-700 text-white',
+  semis: 'bg-forest-700 text-white',
   bouture: 'bg-teal-700 text-white',
 }
 const KIND_ICONS: Record<SowingKind, LucideIcon> = { semis: Sprout, bouture: Scissors }

@@ -25,9 +25,9 @@ export function CompassPicker({ value, onChange }: CompassPickerProps) {
   return (
     <div>
       <div className="relative mx-auto" style={{ width: SIZE, height: SIZE }}>
-        <div className="absolute inset-0 rounded-full border-2 border-neutral-200 bg-neutral-50" />
-        <div className="absolute inset-5 rounded-full border border-dashed border-neutral-200" />
-        <div className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-300" />
+        <div className="absolute inset-0 rounded-full border-2 border-forest-100 bg-cream" />
+        <div className="absolute inset-5 rounded-full border border-dashed border-forest-200" />
+        <div className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-forest-300" />
         {ORIENTATIONS.map((o, i) => {
           const angle = i * 45
           const rad = (angle * Math.PI) / 180
@@ -43,8 +43,8 @@ export function CompassPicker({ value, onChange }: CompassPickerProps) {
               style={{ left: x, top: y }}
               className={`absolute flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-xs font-semibold ${
                 active
-                  ? 'bg-green-800 text-white'
-                  : 'border border-neutral-300 bg-white text-neutral-600 hover:border-green-600 hover:text-green-700'
+                  ? 'bg-forest-700 text-white shadow-sm'
+                  : 'border border-line bg-white text-neutral-600 hover:border-forest-500 hover:text-forest-700'
               }`}
             >
               {SHORT_LABELS[o.value]}
