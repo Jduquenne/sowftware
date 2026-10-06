@@ -1,9 +1,17 @@
-import { LandPlot, Sprout, CalendarDays, Salad, Droplet } from 'lucide-react'
+import { Droplet, LayoutDashboard, Sprout } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../../store'
-import { buildDashboardSummary } from './logic/dashboard'
+import { buildDashboardSummary, type WateringAlert } from './logic/dashboard'
+import { formatShortDate, seasonLabel, seasonOfMonth } from './logic/season'
+import { getCurrentMonth } from '../../utils/months'
+import { SectionHeading } from '../../ui/SectionCard'
+import { StatCard } from '../../ui/StatCard'
+import { Badge } from '../../ui/Badge'
 import { Button } from '../../ui/Button'
 import { EmptyState } from '../../ui/EmptyState'
+import { WateringAlertCard } from './WateringAlertCard'
+import { SeasonPlantCard } from './SeasonPlantCard'
+import { FirstPlotHint } from './FirstPlotHint'
 
 export function HomeMobile() {
   const catalog = useStore((s) => s.catalog)
@@ -14,117 +22,93 @@ export function HomeMobile() {
   const navigate = useNavigate()
 
   const summary = buildDashboardSummary(catalog, plots, plantings, wateringLogs)
+  const season = seasonLabel(seasonOfMonth(getCurrentMonth()))
+
+  const water = ({ planting }: WateringAlert) =>
+    addWateringLog({
+      plantingId: planting.id,
+      plotId: planting.plotId,
+      wateredAt: new Date().toISOString(),
+      amountMl: null,
+      note: '',
+    })
+
+  const seeAll = (path: string) => (
+    <Button variant="link" onClick={() => navigate(path)}>
+      Voir tout
+    </Button>
+  )
 
   return (
-    <div className="p-4">
-      <h1 className="flex items-center gap-2 text-lg font-semibold text-green-800">
-        <Sprout size={22} />
-        Bonjour !
-      </h1>
-
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <div className="rounded-lg bg-emerald-50 p-3">
-          <LandPlot size={18} className="text-emerald-700" />
-          <div className="mt-1 text-xl font-semibold text-emerald-800">{summary.plotCount}</div>
-          <div className="text-xs text-emerald-700">parcelle(s)</div>
-        </div>
-        <div className="rounded-lg bg-teal-50 p-3">
-          <Sprout size={18} className="text-teal-700" />
-          <div className="mt-1 text-xl font-semibold text-teal-800">{summary.activePlantingCount}</div>
-          <div className="text-xs text-teal-700">plantation(s) active(s)</div>
+    <div className="space-y-7 px-5 pt-6 pb-4">
+      <div className="relative overflow-hidden rounded-3xl bg-linear-to-r from-forest-800 via-forest-600 to-forest-400 px-6 py-5 shadow-float">
+        <div className="text-sm font-bold tracking-[0.18em] text-sun-300 uppercase">
+          {formatShortDate(new Date())} · {season}
         </div>
       </div>
 
-      <section className="mt-5">
-        <button
-          type="button"
-          onClick={() => navigate('/sowing')}
-          className="flex w-full items-center gap-2 text-sm font-semibold text-neutral-700"
-        >
-          <CalendarDays size={16} className="text-emerald-600" />
-          À semer ce mois-ci
-        </button>
-        {summary.sowingThisMonth.length === 0 ? (
-          <EmptyState size="xs" className="mt-2">Rien à semer ce mois-ci.</EmptyState>
-        ) : (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {summary.sowingThisMonth.map((entry) => (
-              <span key={entry.id} className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs text-emerald-800">
-                {entry.nomCommun}
-              </span>
-            ))}
-          </div>
-        )}
-      </section>
+      {plots.length === 0 && <FirstPlotHint />}
 
-      <section className="mt-5">
-        <button
-          type="button"
-          onClick={() => navigate('/harvest')}
-          className="flex w-full items-center gap-2 text-sm font-semibold text-neutral-700"
-        >
-          <Salad size={16} className="text-orange-600" />
-          À récolter maintenant
-        </button>
-        {summary.harvestThisMonth.length === 0 ? (
-          <EmptyState size="xs" className="mt-2">Rien à récolter ce mois-ci.</EmptyState>
-        ) : (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {summary.harvestThisMonth.map((entry) => (
-              <span key={entry.id} className="rounded-full bg-orange-50 px-2.5 py-1 text-xs text-orange-800">
-                {entry.nomCommun}
-              </span>
-            ))}
-          </div>
-        )}
-      </section>
+      <div className="grid grid-cols-2 gap-3">
+        <StatCard size="sm" icon={LayoutDashboard} value={summary.plotCount} label="Parcelles" />
+        <StatCard
+          size="sm"
+          icon={Sprout}
+          iconClass="bg-pink-100 text-pink-700"
+          value={summary.ongoingPlantingCount}
+          label="Plantations"
+        />
+      </div>
 
-      <section className="mt-5">
-        <div className="flex items-center gap-2 text-sm font-semibold text-neutral-700">
-          <Droplet size={16} className="text-blue-600" />
-          Arrosage
-        </div>
+      <section>
+        <SectionHeading
+          title="À arroser"
+          icon={Droplet}
+          iconClass="bg-water-50 text-water-600"
+          badge={
+            summary.wateringAlerts.length > 0 && (
+              <Badge pill className="bg-sun-100 text-sun-800">
+                {summary.wateringAlerts.length}
+              </Badge>
+            )
+          }
+        />
         {summary.wateringAlerts.length === 0 ? (
-          <EmptyState size="xs" className="mt-2">Rien à arroser pour le moment.</EmptyState>
+          <EmptyState className="mt-3">Rien à arroser pour le moment.</EmptyState>
         ) : (
-          <ul className="mt-2 space-y-2">
-            {summary.wateringAlerts.map(({ planting, entry, days }) => (
-              <li
-                key={planting.id}
-                className="flex items-center justify-between rounded-lg bg-blue-50 px-3 py-2 text-sm"
-              >
-                <div>
-                  <div className="font-medium text-blue-900">{entry?.nomCommun ?? 'Plante inconnue'}</div>
-                  <div className="text-xs text-blue-700">
-                    {days === null ? 'Jamais arrosé' : `Il y a ${days} jour(s)`}
-                  </div>
-                </div>
-                <Button
-                  variant="info"
-                  size="sm"
-                  onClick={() =>
-                    addWateringLog({
-                      plantingId: planting.id,
-                      plotId: planting.plotId,
-                      wateredAt: new Date().toISOString(),
-                      amountMl: null,
-                      note: '',
-                    })
-                  }
-                >
-                  Arroser
-                </Button>
-              </li>
+          <div className="mt-4 space-y-3">
+            {summary.wateringAlerts.map((alert) => (
+              <WateringAlertCard key={alert.planting.id} alert={alert} variant="mobile" onWater={() => water(alert)} />
             ))}
-          </ul>
+          </div>
         )}
       </section>
 
-      {plots.length === 0 && (
-        <section className="mt-6 rounded-lg border border-dashed border-neutral-300 p-3 text-sm text-neutral-500">
-          Créez votre première parcelle pour commencer à suivre vos plantations.
-        </section>
-      )}
+      <section>
+        <SectionHeading title="À semer ce mois-ci" action={seeAll('/sowing')} />
+        {summary.sowingThisMonth.length === 0 ? (
+          <EmptyState className="mt-3">Rien à semer ce mois-ci.</EmptyState>
+        ) : (
+          <div className="-mx-5 mt-4 flex gap-3 overflow-x-auto px-5 pb-1">
+            {summary.sowingThisMonth.map((entry) => (
+              <SeasonPlantCard key={entry.id} entry={entry} strip="S" className="w-40 shrink-0" />
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section>
+        <SectionHeading title="À récolter maintenant" action={seeAll('/harvest')} />
+        {summary.harvestThisMonth.length === 0 ? (
+          <EmptyState className="mt-3">Rien à récolter ce mois-ci.</EmptyState>
+        ) : (
+          <div className="-mx-5 mt-4 flex gap-3 overflow-x-auto px-5 pb-1">
+            {summary.harvestThisMonth.map((entry) => (
+              <SeasonPlantCard key={entry.id} entry={entry} strip="R" className="w-40 shrink-0" />
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   )
 }
