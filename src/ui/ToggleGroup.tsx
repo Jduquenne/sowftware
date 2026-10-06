@@ -8,7 +8,7 @@ interface ToggleGroupProps<T> {
 }
 
 function toggleClass(isActive: boolean, activeClass?: string) {
-  return isActive ? (activeClass ?? 'bg-neutral-700 text-white') : 'bg-neutral-100 text-neutral-400'
+  return isActive ? (activeClass ?? 'bg-forest-700 text-white') : 'border border-line bg-white text-neutral-400'
 }
 
 export function ToggleChips<T>({ options, active, onToggle, iconOnly }: ToggleGroupProps<T>) {
@@ -24,7 +24,7 @@ export function ToggleChips<T>({ options, active, onToggle, iconOnly }: ToggleGr
             onClick={() => onToggle(opt.value)}
             title={opt.label}
             aria-label={opt.label}
-            className={`flex items-center gap-1 rounded-full ${iconOnly ? 'p-1.5' : 'px-2.5 py-1'} text-xs ${toggleClass(isActive, opt.activeClass)}`}
+            className={`flex items-center gap-1 rounded-full ${iconOnly ? 'p-1.5' : 'px-3 py-1'} text-xs font-semibold ${toggleClass(isActive, opt.activeClass)}`}
           >
             {Icon && <Icon size={iconOnly ? 15 : 13} />}
             {!iconOnly && opt.label}
@@ -48,7 +48,7 @@ export function ToggleList<T>({ options, active, onToggle, iconOnly }: ToggleGro
             onClick={() => onToggle(opt.value)}
             title={opt.label}
             aria-label={opt.label}
-            className={`flex items-center gap-1.5 rounded text-left text-xs ${
+            className={`flex items-center gap-1.5 rounded-lg text-left text-xs font-semibold ${
               iconOnly ? 'justify-center p-1.5' : 'w-full px-2 py-1'
             } ${toggleClass(isActive, opt.activeClass)}`}
           >

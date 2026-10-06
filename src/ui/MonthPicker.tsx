@@ -8,7 +8,7 @@ interface MonthPickerProps {
 
 export function MonthPicker({ month, onSelect, counts }: MonthPickerProps) {
   return (
-    <div className="mb-4 flex shrink-0 flex-wrap gap-1">
+    <div className="mb-4 flex shrink-0 flex-wrap gap-1.5">
       {MONTH_NAMES.map((name, i) => {
         const m = i + 1
         const count = counts?.[m] ?? 0
@@ -17,12 +17,12 @@ export function MonthPicker({ month, onSelect, counts }: MonthPickerProps) {
             key={name}
             type="button"
             onClick={() => onSelect(m)}
-            className={`rounded px-3 py-1 text-sm ${
-              month === m ? 'bg-green-800 text-white' : 'bg-neutral-100 text-neutral-600'
+            className={`rounded-full px-3.5 py-1 text-sm font-semibold ${
+              month === m ? 'bg-forest-700 text-white shadow-sm' : 'border border-line bg-white text-neutral-600 hover:bg-cream'
             }`}
           >
             {name}
-            {counts && count > 0 && <span className="ml-1 text-[10px] opacity-70">{count}</span>}
+            {counts && count > 0 && <span className="ml-1.5 text-[11px] opacity-60">{count}</span>}
           </button>
         )
       })}

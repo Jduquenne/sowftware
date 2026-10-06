@@ -27,12 +27,12 @@ export function CatalogSearchSelect({
   const [search, setSearch] = useState('')
 
   if (readOnlyLabel) {
-    return <p className="text-sm text-neutral-800">{readOnlyLabel}</p>
+    return <p className="text-sm font-semibold text-forest-950">{readOnlyLabel}</p>
   }
 
   if (value) {
     return (
-      <div className="flex items-center justify-between rounded border border-neutral-300 px-2 py-1 text-sm">
+      <div className="flex items-center justify-between rounded-xl border border-line bg-white px-3 py-2 text-sm">
         <span>
           {value.nomCommun} — {value.variete}
         </span>
@@ -56,7 +56,7 @@ export function CatalogSearchSelect({
       <TextInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder={placeholder} />
       {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
       {results.length > 0 && (
-        <ul className="mt-1 divide-y divide-neutral-100 rounded border border-neutral-200">
+        <ul className="mt-1.5 divide-y divide-line overflow-hidden rounded-xl border border-line bg-white shadow-card">
           {results.map((c) => (
             <li key={c.id}>
               <button
@@ -65,7 +65,7 @@ export function CatalogSearchSelect({
                   onSelect(c)
                   setSearch('')
                 }}
-                className="block w-full px-2 py-1 text-left text-sm hover:bg-neutral-50"
+                className="block w-full px-3 py-2 text-left text-sm hover:bg-cream"
               >
                 {c.nomCommun} — {c.variete}
                 {renderResultExtra?.(c)}

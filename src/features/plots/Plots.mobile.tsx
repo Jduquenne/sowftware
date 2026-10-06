@@ -5,7 +5,7 @@ import { plotTypeLabel, plotDimensionLabel, expositionLabel } from './logic/plot
 import { flattenHierarchy, getDescendantIds } from './logic/hierarchy'
 import { Button } from '../../ui/Button'
 import { EmptyState } from '../../ui/EmptyState'
-import { ListRow } from '../../ui/ListRow'
+import { ListRow, ListRowGroup } from '../../ui/ListRow'
 import { Badge } from '../../ui/Badge'
 
 export function PlotsMobile() {
@@ -64,11 +64,11 @@ export function PlotsMobile() {
         <Button onClick={() => setMode('create')}>+ Nouvelle</Button>
       </div>
 
-      <ul className="mt-3 divide-y divide-neutral-200">
+      <ListRowGroup className="mt-3">
         {flattenHierarchy(plots).map(({ plot, depth }) => (
           <ListRow
             key={plot.id}
-            style={{ paddingLeft: depth * 16 }}
+            style={{ marginLeft: depth * 16 }}
             title={depth > 0 ? `↳ ${plot.name}` : plot.name}
             subtitle={`${plotTypeLabel(plot.type)} — ${plotDimensionLabel(plot)}`}
             trailing={
@@ -79,7 +79,7 @@ export function PlotsMobile() {
             onClick={() => setMode(plot.id)}
           />
         ))}
-      </ul>
+      </ListRowGroup>
 
       {plots.length === 0 && <EmptyState className="mt-6">Aucune parcelle pour le moment.</EmptyState>}
     </div>

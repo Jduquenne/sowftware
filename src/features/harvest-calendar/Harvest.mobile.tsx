@@ -11,7 +11,6 @@ import { TextInput } from '../../ui/Input'
 import { CatalogCard } from '../../ui/CatalogCard'
 import { EmptyState } from '../../ui/EmptyState'
 import { FlowerPot } from '../../ui/icons/FlowerPot'
-import { MiniYearStrip } from '../../ui/MiniYearStrip'
 
 export function HarvestMobile() {
   const catalog = useStore((s) => s.catalog)
@@ -20,7 +19,6 @@ export function HarvestMobile() {
   const [potActive, setPotActive] = useState(false)
   const [groundActive, setGroundActive] = useState(false)
   const [search, setSearch] = useState('')
-  const [expandedId, setExpandedId] = useState<string | null>(null)
 
   const categories = listCategories(catalog)
   const filtered = filterBySearch(
@@ -68,25 +66,18 @@ export function HarvestMobile() {
 
       <div className="mt-3 flex flex-col gap-2">
         {items.map((entry) => (
-          <div key={entry.id}>
-            <CatalogCard
-              entry={entry}
-              variant="horizontal"
-              onClick={() => setExpandedId((id) => (id === entry.id ? null : entry.id))}
-              extra={
-                entry.saisonRecolte && (
-                  <div className="mt-1">
-                    <Badge className="bg-orange-100 text-orange-800">{entry.saisonRecolte}</Badge>
-                  </div>
-                )
-              }
-            />
-            {expandedId === entry.id && (
-              <div className="rounded-b-lg border-x border-b border-neutral-200 bg-white px-3 pb-2 pt-1">
-                <MiniYearStrip series={[{ months: entry.moisRecolte, colorClass: 'bg-orange-500' }]} />
-              </div>
-            )}
-          </div>
+          <CatalogCard
+            key={entry.id}
+            entry={entry}
+            variant="horizontal"
+            extra={
+              entry.saisonRecolte && (
+                <div className="mt-1">
+                  <Badge className="bg-orange-100 text-orange-800">{entry.saisonRecolte}</Badge>
+                </div>
+              )
+            }
+          />
         ))}
       </div>
 

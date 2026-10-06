@@ -225,8 +225,19 @@ feature**, rather than copy-pasting the class string again.
   for the catalog-category case specifically — reuse `Filter` directly for
   any other filter set (as Sowing's Pot filter and Yield's mode toggle do).
 - `Badge`, `Callout` (`tone`: success/warning), `EmptyState`.
-- `ListRow` — mobile list row (title/subtitle/trailing content, clickable
-  or static).
+- `ListRow` inside `ListRowGroup` — mobile card row (leading/title/subtitle/
+  trailing, clickable or static).
+- `PageHeader` (`variant` desktop/mobile) — screen title band (eyebrow,
+  serif title, subtitle, actions).
+- `SectionCard` / `SectionHeading` — white rounded section with icon-tile +
+  serif heading + optional badge/action; `StatCard` — big-number tile.
+- `IconTile` — tinted rounded icon square; use it instead of hand-rolling one.
+- `YearStrip` — 12-month segmented rows with the current month outlined;
+  `CatalogCard` exports `catalogYearRows` (S semis+bouture / P plantation /
+  R récolte) and always shows it.
+- Theme tokens live in `src/index.css` `@theme` (`forest`, `sun`, `water`,
+  `cream`, `line`, `shadow-card`/`shadow-float`, `font-display` Fraunces,
+  `bg-dots`) — use them rather than raw Tailwind greens/ambers.
 - `DetailAside` + `DetailAsideHeading` — the desktop `w-80` list+detail-panel
   shell shared by `Plots` and `Plantings` desktop views. `Layout` deliberately
   doesn't use it (see Layout assistant section) — a full-width grid needs the

@@ -6,7 +6,7 @@ import { plantingStatusLabel } from './logic/lifecycle'
 import { Button } from '../../ui/Button'
 import { Badge } from '../../ui/Badge'
 import { EmptyState } from '../../ui/EmptyState'
-import { ListRow } from '../../ui/ListRow'
+import { ListRow, ListRowGroup } from '../../ui/ListRow'
 
 export function PlantingsMobile() {
   const plantings = useStore((s) => s.plantings)
@@ -67,7 +67,7 @@ export function PlantingsMobile() {
         <Button onClick={() => setMode('create')}>+ Nouvelle</Button>
       </div>
 
-      <ul className="mt-3 divide-y divide-neutral-200">
+      <ListRowGroup className="mt-3">
         {plantings.map((planting) => (
           <ListRow
             key={planting.id}
@@ -77,7 +77,7 @@ export function PlantingsMobile() {
             onClick={() => setMode(planting.id)}
           />
         ))}
-      </ul>
+      </ListRowGroup>
 
       {plantings.length === 0 && <EmptyState className="mt-6">Aucune plantation pour le moment.</EmptyState>}
     </div>

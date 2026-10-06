@@ -1,3 +1,4 @@
+import { LayoutGrid } from 'lucide-react'
 import { getCategoryStyle } from '../utils/categoryStyle'
 import { FilterChips, FilterList, type FilterOption } from './Filter'
 
@@ -9,15 +10,14 @@ interface CategoryFilterProps {
 
 function categoryOptions(categories: string[]): FilterOption<string | null>[] {
   return [
-    { value: null, label: 'Toutes' },
+    { value: null, label: 'Toutes', icon: LayoutGrid },
     ...categories.map((c) => {
       const style = getCategoryStyle(c)
       return {
         value: c,
         label: c.charAt(0).toUpperCase() + c.slice(1),
         icon: style.icon,
-        activeClass: style.activeClass,
-        iconClass: style.accentClass,
+        iconClass: style.badgeClass,
       }
     }),
   ]

@@ -9,24 +9,24 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: 'bg-green-800 text-white',
-  secondary: 'bg-neutral-100 text-neutral-600',
-  danger: 'text-red-600',
-  info: 'bg-blue-700 text-white',
-  link: 'text-green-800',
-  'link-danger': 'text-red-600',
+  primary: 'bg-forest-700 text-white shadow-sm hover:bg-forest-800',
+  secondary: 'border border-line bg-white text-forest-900 hover:bg-cream',
+  danger: 'border border-red-200 bg-white text-red-700 hover:bg-red-50',
+  info: 'bg-water-600 text-white shadow-sm hover:bg-water-700',
+  link: 'font-semibold text-forest-600 hover:text-forest-800',
+  'link-danger': 'font-semibold text-red-600 hover:text-red-700',
 }
 
 const LINK_VARIANTS: ButtonVariant[] = ['link', 'link-danger']
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
-  md: 'px-3 py-1.5 text-sm',
-  sm: 'px-2 py-1 text-xs',
+  md: 'gap-2 rounded-xl px-4 py-2 text-sm',
+  sm: 'gap-1.5 rounded-lg px-2.5 py-1 text-xs',
 }
 
 const LINK_SIZE_CLASSES: Record<ButtonSize, string> = {
-  md: 'text-sm',
-  sm: 'text-xs',
+  md: 'gap-1.5 text-sm',
+  sm: 'gap-1 text-xs',
 }
 
 export function Button({ variant = 'primary', size = 'md', className = '', ...props }: ButtonProps) {
@@ -36,7 +36,7 @@ export function Button({ variant = 'primary', size = 'md', className = '', ...pr
     <button
       type="button"
       {...props}
-      className={`${isLink ? '' : 'rounded'} ${VARIANT_CLASSES[variant]} ${sizeClass} ${className}`}
+      className={`inline-flex items-center justify-center font-semibold transition-colors disabled:opacity-50 ${VARIANT_CLASSES[variant]} ${sizeClass} ${className}`}
     />
   )
 }

@@ -1,6 +1,7 @@
 import type { InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes } from 'react'
 
-const CONTROL_CLASS = 'w-full rounded border border-neutral-300 px-2 py-1 text-sm'
+const CONTROL_CLASS =
+  'w-full rounded-xl border border-line bg-white px-3 py-2 text-sm text-forest-950 placeholder:text-neutral-400 focus:border-forest-400 focus:ring-2 focus:ring-forest-100 focus:outline-none'
 
 export function TextInput({ className = '', ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return <input {...props} className={`${CONTROL_CLASS} ${className}`} />

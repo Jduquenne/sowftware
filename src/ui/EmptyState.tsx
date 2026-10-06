@@ -14,5 +14,5 @@ const SIZE_CLASSES: Record<EmptyStateSize, string> = {
 }
 
 export function EmptyState({ size = 'sm', className = '', children }: EmptyStateProps) {
-  return <p className={`text-neutral-400 ${SIZE_CLASSES[size]} ${className}`}>{children}</p>
+  return <p className={`text-neutral-500 ${SIZE_CLASSES[size]} ${className}`}>{children}</p>
 }
