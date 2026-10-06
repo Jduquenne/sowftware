@@ -8,8 +8,8 @@ interface CategoryBadgeProps {
 export function CategoryBadge({ categorie }: CategoryBadgeProps) {
   const style = getCategoryStyle(categorie)
   return (
-    <Badge icon={style.icon} pill className={`capitalize ${style.badgeClass}`}>
-      {categorie}
+    <Badge icon={style.icon} pill className={style.badgeClass}>
+      {style.label}
     </Badge>
   )
 }

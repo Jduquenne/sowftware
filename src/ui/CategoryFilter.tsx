@@ -6,29 +6,26 @@ interface CategoryFilterProps {
   categories: string[]
   selected: string | null
   onSelect: (categorie: string | null) => void
+  counts?: Record<string, number>
 }
 
-function categoryOptions(categories: string[]): FilterOption<string | null>[] {
+function categoryOptions(categories: string[], counts?: Record<string, number>): FilterOption<string | null>[] {
+  const total = counts ? Object.values(counts).reduce((sum, n) => sum + n, 0) : undefined
   return [
-    { value: null, label: 'Toutes', icon: LayoutGrid },
+    { value: null, label: 'Toutes', icon: LayoutGrid, count: total },
     ...categories.map((c) => {
       const style = getCategoryStyle(c)
-      return {
-        value: c,
-        label: c.charAt(0).toUpperCase() + c.slice(1),
-        icon: style.icon,
-        iconClass: style.badgeClass,
-      }
+      return { value: c, label: style.pluralLabel, icon: style.icon, iconClass: style.badgeClass, count: counts?.[c] }
     }),
   ]
 }
 
 /** Horizontal scrollable chips — mobile. */
-export function CategoryFilterChips({ categories, selected, onSelect }: CategoryFilterProps) {
-  return <FilterChips options={categoryOptions(categories)} selected={selected} onSelect={onSelect} />
+export function CategoryFilterChips({ categories, selected, onSelect, counts }: CategoryFilterProps) {
+  return <FilterChips options={categoryOptions(categories, counts)} selected={selected} onSelect={onSelect} />
 }
 
-/** Compact vertical list — desktop. Narrower and icon-led, not a wide plain text column. */
-export function CategoryFilterList({ categories, selected, onSelect }: CategoryFilterProps) {
-  return <FilterList options={categoryOptions(categories)} selected={selected} onSelect={onSelect} />
+/** Compact vertical list — desktop. */
+export function CategoryFilterList({ categories, selected, onSelect, counts }: CategoryFilterProps) {
+  return <FilterList options={categoryOptions(categories, counts)} selected={selected} onSelect={onSelect} />
 }

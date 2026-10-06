@@ -192,7 +192,8 @@ people" as a persona/consumption model without re-confirming scope.
 ## Visual design
 
 - `utils/categoryStyle.ts` maps `categorie` (légume/fruit/aromate/fleur) to a
-  `lucide-react` icon + Tailwind color classes (accent/active/badge). Any new
+  `lucide-react` icon, French `label`/`pluralLabel`, a badge/tile class and a
+  photo-fallback `gradientClass`. Any new
   UI showing a catalog category should use this, not an ad-hoc color.
 - `ui/CategoryFilter.tsx` (`CategoryFilterChips` for mobile, `CategoryFilterList`
   for desktop) and `ui/CategoryBadge.tsx` are the shared components for
@@ -232,6 +233,8 @@ feature**, rather than copy-pasting the class string again.
 - `SectionCard` / `SectionHeading` — white rounded section with icon-tile +
   serif heading + optional badge/action; `StatCard` — big-number tile.
 - `IconTile` — tinted rounded icon square; use it instead of hand-rolling one.
+- `Segmented` — pill segmented control for exclusive view modes (Catalogue
+  Grille/Tableau); prefer it over `FilterChips` for a 2–3-way view switch.
 - `YearStrip` — 12-month segmented rows with the current month outlined;
   `CatalogCard` exports `catalogYearRows` (S semis+bouture / P plantation /
   R récolte) and always shows it.

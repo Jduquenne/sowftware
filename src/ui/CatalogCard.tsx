@@ -33,7 +33,8 @@ function spacingLabel(entry: CatalogEntry): string | null {
 }
 
 function potLabel(entry: CatalogEntry): string | null {
-  if (entry.pot === 'oui' || entry.pot === 'possible') return 'En pot'
+  if (entry.pot === 'oui') return 'En pot'
+  if (entry.pot === 'possible') return 'Pot possible'
   if (entry.pot === 'non') return 'Pleine terre'
   return null
 }
@@ -116,7 +117,7 @@ export function CatalogCard({ entry, variant, extra, onClick }: CatalogCardProps
         {pot && (
           <Badge
             pill
-            className={`absolute top-3 right-3 ${pot === 'En pot' ? 'bg-white/90 text-forest-800' : 'bg-forest-950/75 text-white'}`}
+            className={`absolute top-3 right-3 ${pot === 'Pleine terre' ? 'bg-forest-950/75 text-white' : 'bg-white/90 text-forest-800'}`}
           >
             {pot}
           </Badge>

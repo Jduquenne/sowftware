@@ -27,3 +27,15 @@ export function filterBySearch(catalog: CatalogEntry[], search: string): Catalog
   if (!q) return catalog
   return catalog.filter((entry) => `${entry.nomCommun} ${entry.variete}`.toLowerCase().includes(q))
 }
+
+export function sortByName(catalog: CatalogEntry[]): CatalogEntry[] {
+  return [...catalog].sort(
+    (a, b) => a.nomCommun.localeCompare(b.nomCommun, 'fr') || a.variete.localeCompare(b.variete, 'fr'),
+  )
+}
+
+export function countByCategory(catalog: CatalogEntry[]): Record<string, number> {
+  const counts: Record<string, number> = {}
+  for (const entry of catalog) counts[entry.categorie] = (counts[entry.categorie] ?? 0) + 1
+  return counts
+}
