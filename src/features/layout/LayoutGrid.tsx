@@ -1,16 +1,20 @@
 import type { CSSProperties } from 'react'
+import { AlertTriangle, Plus, X } from 'lucide-react'
 import type { CatalogEntry, Placement } from '../../services/db'
 import { cellKey, footprintCells, plotFootprint, type Cell } from './logic/grid'
 import type { PlotOccupancy, PositionedPlot } from './logic/occupancy'
 import type { Tool } from './logic/desktopUiState'
+import { plantColor } from './logic/plantColor'
 import { useDragValue } from './useDragValue'
 
 const CELL_PX = 44
+const SOIL_CELL = 'bg-soil border border-black/10'
 
 interface LayoutGridProps {
   occupancy: PlotOccupancy
   catalogById: ReadonlyMap<string, CatalogEntry>
   conflictingPlacementIds: ReadonlySet<string>
+  selectedPlacementId: string | null
   tool: Tool
   onEmptyCellClick: (cell: Cell) => void
   onPlacementClick: (placement: Placement) => void
@@ -27,6 +31,7 @@ export function LayoutGrid({
   occupancy,
   catalogById,
   conflictingPlacementIds,
+  selectedPlacementId,
   tool,
   onEmptyCellClick,
   onPlacementClick,
@@ -62,7 +67,7 @@ export function LayoutGrid({
           disabled={!shapeMode}
           {...shapeHandlers(cell, false)}
           style={area(cell)}
-          className={`select-none rounded bg-neutral-300 ${shapeMode ? 'hover:bg-neutral-400' : ''}`}
+          className={`border border-dashed border-forest-300/70 bg-white/30 select-none ${shapeMode ? 'hover:bg-white/70' : ''}`}
         />
       )
     }
@@ -77,9 +82,14 @@ export function LayoutGrid({
           type="button"
           onClick={() => onChildClick(child)}
           style={area(cell, footprint.w, footprint.h)}
-          className="flex flex-col items-center justify-center overflow-hidden rounded border-2 border-blue-400 bg-blue-100 p-0.5 text-center text-[10px] font-medium leading-tight text-blue-800"
+          className="relative m-0.5 rounded-xl border-2 border-dashed border-violet-400 bg-violet-200/40 text-left hover:bg-violet-200/60"
         >
-          <span className="truncate">{child.name}</span>
+          <span className="absolute top-1.5 left-1.5 max-w-[calc(100%-12px)] truncate rounded-full bg-white px-2 py-0.5 text-[11px] font-semibold text-violet-700">
+            {child.name}
+          </span>
+          <span className="absolute bottom-1.5 left-1.5 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-semibold text-violet-700">
+            Sous-parcelle · {footprint.w}×{footprint.h}
+          </span>
         </button>
       )
     }
@@ -90,10 +100,12 @@ export function LayoutGrid({
       const entry = catalogById.get(placement.catalogId)
       const size = entry ? footprintCells(entry) : 1
       const hasConflict = conflictingPlacementIds.has(placement.id)
+      const selected = placement.id === selectedPlacementId
       return (
         <button
           key={key}
           type="button"
+          title={entry ? `${entry.nomCommun} · ${entry.variete}` : undefined}
           onClick={() => {
             if (!deleteMode) onPlacementClick(placement)
           }}
@@ -106,12 +118,35 @@ export function LayoutGrid({
             if (deleteMode && eraseDrag) onRemovePlacement(placement.id)
           }}
           style={area(cell, size, size)}
-          className={`flex flex-col items-center justify-center overflow-hidden rounded p-0.5 text-center text-[10px] leading-tight text-white select-none ${
-            deleteMode ? 'bg-red-700 hover:bg-red-800' : hasConflict ? 'bg-amber-600' : 'bg-green-700'
+          className={`relative select-none ${SOIL_CELL} ${hasConflict || selected ? 'z-10' : ''} ${
+            selected ? 'outline-2 -outline-offset-2 outline-white' : ''
           }`}
         >
-          {deleteMode ? <span>✕</span> : hasConflict && <span>⚠️</span>}
-          <span className="truncate">{entry?.nomCommun}</span>
+          <span
+            className={`absolute inset-[8%] flex items-center justify-center rounded-full bg-forest-600 shadow-[inset_0_-3px_0_rgb(0_0_0/0.18)] ring-2 ${
+              hasConflict ? 'ring-sun-300' : 'ring-forest-300/50'
+            }`}
+          >
+            <span
+              className="size-[32%] rounded-full"
+              style={{ backgroundColor: entry ? plantColor(entry.nomCommun) : undefined }}
+            />
+          </span>
+          {size >= 2 && entry && (
+            <span className="absolute top-1 left-1 max-w-[calc(100%-8px)] truncate rounded-full bg-white/90 px-1.5 text-[10px] font-semibold text-forest-900">
+              {entry.nomCommun}
+            </span>
+          )}
+          {hasConflict && !deleteMode && (
+            <span className="absolute -top-1.5 -right-1.5 flex size-5 items-center justify-center rounded-full bg-sun-300 text-forest-950 ring-2 ring-white">
+              <AlertTriangle size={11} />
+            </span>
+          )}
+          {deleteMode && (
+            <span className="absolute inset-0 flex items-center justify-center bg-red-700/55 text-white hover:bg-red-700/75">
+              <X size={18} />
+            </span>
+          )}
         </button>
       )
     }
@@ -126,32 +161,34 @@ export function LayoutGrid({
         {...shapeHandlers(cell, true)}
         disabled={deleteMode}
         style={area(cell)}
-        className={`select-none ${
+        className={`flex items-center justify-center select-none ${SOIL_CELL} ${
           shapeMode
-            ? 'rounded border border-neutral-400 bg-white text-neutral-400 hover:border-red-400 hover:bg-red-50 hover:text-red-500'
+            ? 'text-transparent hover:bg-red-900/40 hover:text-white'
             : deleteMode
-              ? 'rounded border border-neutral-200 bg-neutral-50 text-neutral-200'
+              ? 'text-transparent'
               : tool.kind === 'armed'
-                ? 'rounded border border-green-400 bg-green-50 text-green-600 hover:border-green-600 hover:bg-green-100'
-                : 'rounded border border-neutral-400 bg-white text-neutral-400 hover:border-green-600 hover:bg-green-50 hover:text-green-600'
+                ? 'text-white/35 hover:brightness-125 hover:text-white'
+                : 'text-transparent hover:brightness-125 hover:text-white/90'
         }`}
       >
-        {shapeMode ? '✕' : '+'}
+        {shapeMode ? <X size={16} /> : <Plus size={16} />}
       </button>
     )
   }
 
   return (
-    <div
-      className="grid gap-0.5"
-      style={{
-        gridTemplateColumns: `repeat(${grid.cols}, ${CELL_PX}px)`,
-        gridTemplateRows: `repeat(${grid.rows}, ${CELL_PX}px)`,
-      }}
-    >
-      {Array.from({ length: grid.cols }).flatMap((_, x) =>
-        Array.from({ length: grid.rows }).map((_, y) => renderCell({ x, y })),
-      )}
+    <div className="w-fit rounded-2xl bg-white/45 p-3 shadow-card">
+      <div
+        className="grid overflow-visible rounded-lg"
+        style={{
+          gridTemplateColumns: `repeat(${grid.cols}, ${CELL_PX}px)`,
+          gridTemplateRows: `repeat(${grid.rows}, ${CELL_PX}px)`,
+        }}
+      >
+        {Array.from({ length: grid.cols }).flatMap((_, x) =>
+          Array.from({ length: grid.rows }).map((_, y) => renderCell({ x, y })),
+        )}
+      </div>
     </div>
   )
 }

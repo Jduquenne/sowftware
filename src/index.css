@@ -33,6 +33,10 @@
   --color-cream: #f5f4ec;
   --color-cream-dot: #e3e2d6;
   --color-line: #e7e5da;
+  --color-meadow: #e4ecd5;
+  --color-meadow-dot: #d3dfc0;
+  --color-soil: #7a5638;
+  --color-soil-dark: #5f4129;
 
   --color-sun-100: #fcf0c8;
   --color-sun-300: #f6d77a;
@@ -51,6 +55,20 @@
   background-color: var(--color-cream);
   background-image: radial-gradient(var(--color-cream-dot) 1px, transparent 1.2px);
   background-size: 22px 22px;
+}
+
+@utility bg-meadow-dots {
+  background-color: var(--color-meadow);
+  background-image: radial-gradient(var(--color-meadow-dot) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+@utility bg-soil {
+  background-color: var(--color-soil);
+  background-image:
+    radial-gradient(circle at 30% 40%, rgb(0 0 0 / 0.22) 1px, transparent 1.6px),
+    radial-gradient(circle at 70% 75%, rgb(255 255 255 / 0.08) 1px, transparent 1.6px);
+  background-size: 14px 14px, 18px 18px;
 }
 
 @layer base {

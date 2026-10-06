@@ -113,3 +113,27 @@ export function plotWideConflicts(
     return reason ? [{ neighbor, reason }] : []
   })
 }
+
+export interface ConflictPair {
+  a: Placement
+  b: Placement
+  reason: string
+}
+
+export function plotConflictPairs(
+  plotPlacements: Placement[],
+  occupancy: PlotOccupancy,
+  catalogById: ReadonlyMap<string, CatalogEntry>,
+): ConflictPair[] {
+  const seen = new Set<string>()
+  const pairs: ConflictPair[] = []
+  for (const placement of plotPlacements) {
+    for (const { neighbor, reason } of adjacentConflicts(placement, occupancy, catalogById)) {
+      const key = [placement.id, neighbor.id].sort().join('|')
+      if (seen.has(key)) continue
+      seen.add(key)
+      pairs.push({ a: placement, b: neighbor, reason })
+    }
+  }
+  return pairs
+}

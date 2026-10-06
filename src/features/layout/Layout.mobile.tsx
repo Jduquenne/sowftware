@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Plus } from 'lucide-react'
 import { useStore } from '../../store'
 import type { CatalogEntry } from '../../services/db'
 import { entryFootprint, findFreeAnchor } from './logic/grid'
@@ -10,6 +11,11 @@ import { Select } from '../../ui/Input'
 import { CatalogSearchSelect } from '../../ui/CatalogSearchSelect'
 import { Callout } from '../../ui/Callout'
 import { EmptyState } from '../../ui/EmptyState'
+import { PageHeader } from '../../ui/PageHeader'
+import { Badge } from '../../ui/Badge'
+import { ListRow, ListRowGroup } from '../../ui/ListRow'
+import { EntryVisual } from '../../ui/CatalogCard'
+import { expositionLabel, plotTypeLabel } from '../plots/logic/plotTypes'
 
 export function LayoutMobile() {
   const plots = useStore((s) => s.plots)
@@ -32,11 +38,11 @@ export function LayoutMobile() {
 
   if (layoutablePlots.length === 0) {
     return (
-      <div className="p-4">
-        <h1 className="text-lg font-semibold text-green-800">Disposition</h1>
-        <p className="mt-3 text-sm text-neutral-500">
+      <div>
+        <PageHeader variant="mobile" title="Disposition" />
+        <EmptyState className="px-5">
           Créez d'abord une parcelle avec des dimensions — pas disponible pour les parcelles en pot.
-        </p>
+        </EmptyState>
       </div>
     )
   }
@@ -59,68 +65,95 @@ export function LayoutMobile() {
 
   if (mode === 'add') {
     return (
-      <div className="p-4">
-        <h1 className="mb-3 text-lg font-semibold text-green-800">Ajouter une plante</h1>
-        <CatalogSearchSelect catalog={catalog} onSelect={handleAdd} error={addError} />
-        <Button variant="secondary" onClick={() => setMode('list')} className="mt-3">
-          Annuler
-        </Button>
+      <div>
+        <PageHeader variant="mobile" title="Ajouter une plante" subtitle={plot?.name} />
+        <div className="px-5">
+          <CatalogSearchSelect catalog={catalog} onSelect={handleAdd} error={addError} />
+          <Button variant="secondary" onClick={() => setMode('list')} className="mt-4">
+            Annuler
+          </Button>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-lg font-semibold text-green-800">Disposition</h1>
+    <div>
+      <PageHeader
+        variant="mobile"
+        title="Disposition"
+        actions={`${plotPlacements.length} plante${plotPlacements.length > 1 ? 's' : ''}`}
+      />
 
-      <Select
-        value={selectedPlotId ?? ''}
-        onChange={(e) => {
-          setSelectedPlotId(e.target.value)
-          setLastSelectedPlotId(e.target.value)
-        }}
-        className="mt-2"
-      >
-        {layoutablePlots.map((p) => (
-          <option key={p.id} value={p.id}>
-            {p.name}
-          </option>
-        ))}
-      </Select>
+      <div className="space-y-4 px-5 pb-4">
+        <Select
+          value={selectedPlotId ?? ''}
+          onChange={(e) => {
+            setSelectedPlotId(e.target.value)
+            setLastSelectedPlotId(e.target.value)
+          }}
+        >
+          {layoutablePlots.map((p) => (
+            <option key={p.id} value={p.id}>
+              {p.name}
+            </option>
+          ))}
+        </Select>
 
-      <div className="mt-3 flex items-center justify-between">
-        <p className="text-xs text-neutral-400">{plotPlacements.length} plante(s) placée(s)</p>
-        <Button onClick={() => setMode('add')}>+ Ajouter</Button>
+        {plot && (
+          <div className="flex flex-wrap gap-1.5">
+            <Badge pill className="bg-white py-1 text-forest-950 shadow-card">
+              {plotTypeLabel(plot.type)} · {plot.lengthCm} × {plot.widthCm} cm
+            </Badge>
+            {plot.exposition && (
+              <Badge pill className="bg-sun-100 py-1 text-sun-800">
+                {expositionLabel(plot.exposition)}
+              </Badge>
+            )}
+          </div>
+        )}
+
+        <Button onClick={() => setMode('add')} className="w-full">
+          <Plus size={16} />
+          Ajouter une plante
+        </Button>
+
+        {plotPlacements.length === 0 ? (
+          <EmptyState>Aucune plante placée dans cette parcelle.</EmptyState>
+        ) : (
+          <ListRowGroup>
+            {plotPlacements.map((placement) => {
+              const entry = catalogById.get(placement.catalogId)
+              const conflicts = plotWideConflicts(placement, plotPlacements, catalogById)
+              return (
+                <ListRow
+                  key={placement.id}
+                  leading={
+                    <div className="relative size-12 shrink-0 overflow-hidden rounded-xl bg-forest-50">
+                      {entry && <EntryVisual entry={entry} className="absolute inset-0 h-full w-full" iconSize={20} />}
+                    </div>
+                  }
+                  title={entry?.nomCommun}
+                  subtitle={`${entry?.variete ?? ''} · espacement ${entry?.espacementRaw || '—'} cm`}
+                  trailing={
+                    <Button variant="link-danger" onClick={() => removePlacement(placement.id)}>
+                      Retirer
+                    </Button>
+                  }
+                  footer={
+                    conflicts.length > 0 &&
+                    conflicts.map(({ neighbor, reason }) => (
+                      <Callout key={neighbor.id} tone="warning" size="sm">
+                        <strong>Conflit avec {catalogById.get(neighbor.catalogId)?.nomCommun}</strong> : {reason}
+                      </Callout>
+                    ))
+                  }
+                />
+              )
+            })}
+          </ListRowGroup>
+        )}
       </div>
-
-      <ul className="mt-3 divide-y divide-neutral-200">
-        {plotPlacements.map((placement) => {
-          const entry = catalogById.get(placement.catalogId)
-          const conflicts = plotWideConflicts(placement, plotPlacements, catalogById)
-          return (
-            <li key={placement.id} className="py-3">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-medium text-neutral-800">{entry?.nomCommun}</div>
-                  <div className="text-sm text-neutral-500">
-                    {entry?.variete} — espacement {entry?.espacementRaw || '—'} cm
-                  </div>
-                </div>
-                <Button variant="link-danger" onClick={() => removePlacement(placement.id)}>
-                  Retirer
-                </Button>
-              </div>
-              {conflicts.map(({ neighbor, reason }) => (
-                <Callout key={neighbor.id} tone="warning" size="sm" className="mt-1">
-                  ⚠️ Conflit avec {catalogById.get(neighbor.catalogId)?.nomCommun} : {reason}
-                </Callout>
-              ))}
-            </li>
-          )
-        })}
-      </ul>
-
-      {plotPlacements.length === 0 && <EmptyState className="mt-6">Aucune plante placée dans cette parcelle.</EmptyState>}
     </div>
   )
 }

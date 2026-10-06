@@ -5,9 +5,10 @@ export type Tool = { kind: 'place' } | { kind: 'shape' } | { kind: 'delete' } | 
 
 export type Panel =
   | { kind: 'none' }
-  | { kind: 'pick'; cell: Cell }
+  | { kind: 'pick'; cell: Cell | null }
   | { kind: 'placement'; placementId: string }
   | { kind: 'child'; childId: string }
+  | { kind: 'conflicts' }
 
 export interface LayoutUiState {
   tool: Tool
@@ -19,6 +20,7 @@ export type LayoutUiAction =
   | { type: 'toggleTool'; tool: 'shape' | 'delete' }
   | { type: 'arm'; entry: CatalogEntry }
   | { type: 'disarm' }
+  | { type: 'startSeries' }
   | { type: 'openPanel'; panel: Panel }
   | { type: 'closePanel' }
 
@@ -35,6 +37,8 @@ export function layoutUiReducer(state: LayoutUiState, action: LayoutUiAction): L
       return { tool: state.tool.kind === action.tool ? PLACE : { kind: action.tool }, panel: NO_PANEL }
     case 'arm':
       return { tool: { kind: 'armed', entry: action.entry }, panel: NO_PANEL }
+    case 'startSeries':
+      return { tool: PLACE, panel: { kind: 'pick', cell: null } }
     case 'disarm':
       return state.tool.kind === 'armed' ? { ...state, tool: PLACE } : state
     case 'openPanel':

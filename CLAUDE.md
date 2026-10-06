@@ -174,6 +174,15 @@ Bump `SEED_VERSION` in `src/services/db/seed.ts` after running either script.
   grid needs the space a fixed aside would take. It renders a floating
   bottom-right panel only when there's something to show (shape mode active,
   or an interaction other than idle), keeping the grid full width when idle.
+  Kept deliberately on-demand even though the mockup shows it always open
+  (decided 2026-10-06): Détail/Conflits tabs appear inside it when a
+  placement/sub-plot/conflicts panel is open; the info-bar conflict chip
+  opens the `conflicts` panel (whole-plot pairs from `plotConflictPairs`).
+- "Placement en série" header button dispatches `startSeries` (a `pick`
+  panel with `cell: null`): picking a plant arms it without placing one.
+- Plant markers use `logic/plantColor.ts` (deterministic hash of
+  `nomCommun` into a small palette) for the grid dot and the "Sur le plan"
+  legend — not category colors.
 - The last plot selected is remembered in `layoutSlice`'s
   `lastSelectedPlotId` (in-memory only, not persisted to IndexedDB) and used
   as the default plot, so navigating away and back to Disposition doesn't
@@ -227,7 +236,7 @@ feature**, rather than copy-pasting the class string again.
   any other filter set (as Sowing's Pot filter and Yield's mode toggle do).
 - `Badge`, `Callout` (`tone`: success/warning), `EmptyState`.
 - `ListRow` inside `ListRowGroup` — mobile card row (leading/title/subtitle/
-  trailing, clickable or static).
+  trailing + optional `footer` e.g. warnings, clickable or static).
 - `PageHeader` (`variant` desktop/mobile) — screen title band (eyebrow,
   serif title, subtitle, actions).
 - `SectionCard` / `SectionHeading` — white rounded section with icon-tile +
